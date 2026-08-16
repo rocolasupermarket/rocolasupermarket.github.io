@@ -1,4 +1,4 @@
-Sitemap: https://rocola-supermarket.am/sitemapindex.xml
+Sitemap: https://rocolasupermarket.github.io/sitemapindex.xml
 
 User-Agent: *
-Host: rocola-supermarket.am
+Host: rocolasupermarket.github.io

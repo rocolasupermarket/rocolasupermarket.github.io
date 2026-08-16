@@ -6,127 +6,203 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/abovyan.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/aktsia.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/aktsia.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/banjareghen.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/banjareghen.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/cat_endhanowr.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/cat_endhanowr.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/cat_norowtyownner.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/cat_norowtyownner.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/cat_tesakani.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/mirg.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/cat_tntesakan-aprankner.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/oghjowyn.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/hatsabowlkeghen.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/sowpermarket.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/katnamterk.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/categories/tarm.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/makrowtyown.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/abovyan.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/mirg.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/cat_general.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/norowyt.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/cat_news.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/oghjowyn.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/fresh.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/sowpermarket.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/fruits.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/tarm.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/promo.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/categories/tntesakan.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/supermarket.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/abovyan.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/vegetables.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/bakery.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/categories/welcome.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/cat_assortment.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/en/rss.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/cat_general.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/rss.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/cat_household-goods.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/abovian.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/cat_news.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/aktsiia.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/cleaning.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/cat_novosti.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/dairy.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/cat_obshchie.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/fresh.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/dobro-pozhalovat.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/fruits.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/frukty.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/household.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/ovoshchi.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/new.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/supermarket.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/promo.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/categories/svezhee.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/supermarket.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/ru/rss.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/vegetables.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
  <sitemap>
-  <loc>https://rocola-supermarket.am/sitemap.xml</loc>
-  <lastmod>2026-08-16T10:26:00Z</lastmod>
+  <loc>https://rocolasupermarket.github.io/en/categories/welcome.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/en/rss.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/rss.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/abovian.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/aktsiia.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/cat_assortiment.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/cat_khoziaistvennye-tovary.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/cat_novosti.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/cat_obshchie.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/chistota.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/dobro-pozhalovat.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/frukty.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/khoziaistvennye.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/molochnye-produkty.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/novinka.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/ovoshchi.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/svezhee.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/categories/vypechka.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/ru/rss.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
+ </sitemap>
+ <sitemap>
+  <loc>https://rocolasupermarket.github.io/sitemap.xml</loc>
+  <lastmod>2026-08-16T18:52:00Z</lastmod>
  </sitemap>
 </sitemapindex>
