@@ -1,0 +1,134 @@
+/* Core Variables: Rocola Corporate Green Palette */
+:root {
+    --rocola-green-primary: #2e7d32;
+    --rocola-green-dark: #1b5e20;
+    --rocola-green-light: #4caf50;
+    --rocola-accent: #ffeb3b;
+    --bg-light: #f9fbf9;
+    --text-dark: #333333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+.rocola-page-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Dynamic App Layout */
+.rocola-app-container {
+    display: flex;
+    gap: 2rem;
+    margin-top: 3rem;
+    align-items: flex-start;
+}
+
+/* Sidebar Filters */
+.rocola-filters {
+    flex: 0 0 250px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--rocola-green-primary);
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--rocola-green-dark);
+}
+
+.filter-group input[type="range"] {
+    width: 100%;
+    accent-color: var(--rocola-green-primary);
+}
+
+/* Product Grid */
+.rocola-product-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(46, 125, 50, 0.15);
+    border-color: var(--rocola-green-primary);
+}
+
+.product-info h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--rocola-green-dark);
+}
+
+.product-info .sku {
+    font-size: 0.8rem;
+    color: #888;
+    margin: 0 0 1rem 0;
+}
+
+.product-info .price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--rocola-green-primary);
+    margin: 0;
+}
+
+/* Promotion Badges */
+.promo-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: var(--rocola-accent);
+    color: var(--rocola-green-dark);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.product-card.promo-active {
+    border: 2px solid var(--rocola-accent);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .rocola-app-container {
+        flex-direction: column;
+    }
+    .rocola-filters {
+        width: 100%;
+    }
+}
+
+.h3-equivalent {
+  font-size: 1.17em;
+  font-weight: bold;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}

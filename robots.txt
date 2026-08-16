@@ -1,0 +1,4 @@
+Sitemap: https://rocola-supermarket.am/sitemapindex.xml
+
+User-Agent: *
+Host: rocola-supermarket.am

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html><body># =============================================================================
+# ROCOLA SUPERMARKET - NIKOLA CONFIGURATION (conf.py)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 1. Core Framework &amp; Language Settings
+# -----------------------------------------------------------------------------
+
+# Set the primary/default language of the site to Armenian.
+DEFAULT_LANG = "hy"
+
+# Define the supported languages and their output directories.
+# Armenian ("hy") is built to the root directory ("").
+# English ("en") and Russian ("ru") are built to their respective subdirectories.
+TRANSLATIONS = {
+    DEFAULT_LANG: "",
+    "en": "./en",
+    "ru": "./ru",
+}
+
+# Define the naming pattern for your translated source files.
+# For example:
+#   pages/բարևիկ-խաղալիքներ.rst (Armenian, default)
+#   pages/բարևիկ-խաղալիքներ.en.rst (English translation)
+#   pages/բարևիկ-խաղալիքներ.ru.rst (Russian translation)
+TRANSLATIONS_PATTERN = "{path}.{lang}.{ext}"
+
+# -----------------------------------------------------------------------------
+# 2. URL, Slugs &amp; SEO (Armenian Characters)
+# -----------------------------------------------------------------------------
+
+# EXPLICITLY DISABLED: This prevents Nikola from attempting to convert Armenian
+# characters into Latin characters. This guarantees that files named
+# "բարևիկ-խաղալիքներ.rst" will generate the URL "/բարևիկ-խաղալիքներ.html",
+# maximizing local Kotayk Province SEO.
+URL_TRANSLIT = False
+
+# -----------------------------------------------------------------------------
+# 3. Content Format (Strict reStructuredText)
+# -----------------------------------------------------------------------------
+
+# Ensure Nikola only compiles .rst files, enforcing the strict reST requirement.
+COMPILERS = {
+    "rest": ('.rst',),
+}
+
+# Map where pages and posts are read from and where they are output.
+# We are only watching for .rst extensions here.
+PAGES = (
+    ("pages/*.rst", "pages", "page.tmpl"),
+)
+POSTS = (
+    ("posts/*.rst", "posts", "post.tmpl"),
+)
+
+# -----------------------------------------------------------------------------
+# 4. Navigation Links (Multilingual Setup)
+# -----------------------------------------------------------------------------
+
+# Map out the top-level navigation for all three languages.
+# Nikola automatically handles routing these to the correct localized subdirectory.
+NAVIGATION_LINKS = {
+    DEFAULT_LANG: (
+        ("/", "Գլխավոր"),                      # Home
+        ("/pages/ապրանքներ.html", "Ապրանքներ"), # Products
+        ("/pages/կապ.html", "Կապ"),            # Contact
+    ),
+    "en": (
+        ("/", "Home"),
+        ("/pages/ապրանքներ.html", "Products"),
+        ("/pages/կապ.html", "Contact"),
+    ),
+    "ru": (
+        ("/", "Главная"),
+        ("/pages/ապրանքներ.html", "Продукты"),
+        ("/pages/կապ.html", "Контакты"),
+    ),
+}
+
+# -----------------------------------------------------------------------------
+# 5. Theme and UI Settings
+# -----------------------------------------------------------------------------
+
+# Assigning the custom theme containing your page.tmpl and JavaScript UI logic.
+THEME = "rocola_theme"
+
+# (Optional but recommended) Set site metadata for SEO.
+SITE_URL = "https://rocolasupermarket.github.io/" # Replace with your GitHub Pages / Custom Domain
+BLOG_AUTHOR = "Rocola Supermarket"
+BLOG_TITLE = "Rocola Supermarket"
+BLOG_DESCRIPTION = "Rocola Supermarket - E. Petrosyan St. 1/6, Abovyan, Armenia"</body></html>
