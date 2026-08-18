@@ -1,7 +1,50 @@
-sku,title,price,stock,is_promo,image_url
-00012782,Washing Powder "Tide" White Lemon 1.6kg,2060,50,false,/images/products/tide-lemon.jpg
-00018436,Cleaner & Disinfectant "Nash Sad" Alpine Freshness 750ml,730,40,false,/images/products/nash-sad-alpine.jpg
-00018437,Cleaner & Disinfectant "Nash Sad" Extra Power 750ml,730,35,true,/images/products/nash-sad-power.jpg
-00014223,Adhesive Tape "Dar" Small,60,150,false,/images/products/tape-dar.jpg
-00018782,Super Glue "Moment" 3g,150,100,false,/images/products/glue-moment.jpg
-00009366,Plastic Bag "Rocola" Large,70,500,false,/images/products/bag-rocola.jpg
+code,name,price,unit
+00001450,Chocolate bar "Lindt" Excellence dark cocoa 99% 50g,3310.00,Pcs
+00002225,Drink "Mont Berry" aloe vera 1.5L,1050.00,Pcs
+00002790,Beer "Zatecky Gus" c/can 0.45L,570.00,Pcs
+00004210,Beer Heineken c/can 0.5L,920.00,Pcs
+00004956,Tomato paste "Viello" 1050g,1260.00,Pcs
+00004971,Olive caviar "Viello" c/can 350g,570.00,Pcs
+00005398,Lemonade "Natakhtari" saperavi 1L,650.00,Pcs
+00006073,Chocolate bar "Nestle" milk chocolate 75g,500.00,Pcs
+00007681,Mineral water "Jermuk" lemon plastic 1L,310.00,Pcs
+00008017,Carbonated drink "Real" sugar-free 1L,390.00,Pcs
+00008208,Pickled gherkins "Cupoliva" 6-9cm 1415g,1870.00,Pcs
+00008850,White onion,240.00,Kg
+00008970,Mixed greens pack,390.00,Pcs
+00008971,Coriander bunch,380.00,Pcs
+00009366,Plastic bag Rocola large,70.00,Pcs
+00009368,Plastic bag Rocola medium,50.00,Pcs
+00009510,Tarragon bunch,290.00,Pcs
+00009584,Tan drink "Ronis" 1.5% 0.5L,280.00,Pcs
+00009762,Nectarine,1110.00,Kg
+00010963,Sweet cherry,2860.00,Kg
+00011227,Eggs "Arzni" Dzvashen #02 20pcs,2070.00,Pcs
+00011237,Matsun "Tamara" 3.2% 1800g,1380.00,Pcs
+00012111,Green olive paste "Viello" c/can 200g,630.00,Pcs
+00012112,Black olive paste "Viello" c/can 240g,830.00,Pcs
+00012152,Dry cured sausage "Miratorg" Salchichon 280g,2490.00,Pcs
+00012434,Semi-smoked sausage Cervelat "Tsaritsyno" 420g,1190.00,Pcs
+00012609,Plum,980.00,Kg
+00012782,Washing powder "Tide" white lemon 1.6kg,2060.00,Pcs
+00013389,Biokefir "Marianna" 1.0% 450ml,400.00,Pcs
+00014223,Adhesive tape "Duck" small,60.00,Pcs
+00014306,Milk "Chanakh" 3.2% 950ml,570.00,Pcs
+00015597,Ketchup "Glasto" chili 830g,640.00,Pcs
+00015621,Milk "Sofia Milk" 3.2% pasteurized 1L,600.00,Pcs
+00015667,Green peas "Lutik" c/can 690g,880.00,Pcs
+00015717,Milk drink "Sport Barista" chocolate protein 1L,1730.00,Pcs
+00015821,Persimmon / Dates "Tomtur" 600g,800.00,Pcs
+00017349,Raw smoked sausage "Cherkizovo" Salchichon 300g,2070.00,Pcs
+00017578,Gata with milk "Domashni" 500g,880.00,Pcs
+00017919,Biscuit "Lotte" Choco Pie banana 336g,1090.00,Pcs
+00018001,Biscuit "Choco Pie Orion" 360g,820.00,Pcs
+00018004,Green beans "Nush",950.00,Kg
+00018073,Black tea "Grand Tea" with thyme & mint 25pcs,1080.00,Pcs
+00018436,Cleaner & disinfectant "Nash Sad" alpine freshness 750ml,730.00,Pcs
+00018437,Cleaner & disinfectant "Nash Sad" super power 750ml,730.00,Pcs
+00018569,Ice cream "Naviri Lent" cherry 0.6kg,1000.00,Pcs
+00018782,Glue "Moment" 3g,150.00,Pcs
+00018856,Chocolate bar "KitKat" milk choc with biscuit & wafer filling 99g,620.00,Pcs
+00019004,Chanakh cheese "Yerevan" in water 800g,2700.00,Pcs
+00019471,Boneless chicken breast "Lusakert" 1kg,2540.00,Pcs

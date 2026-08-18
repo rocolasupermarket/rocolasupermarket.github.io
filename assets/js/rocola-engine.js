@@ -1,126 +1,136 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const appMount = document.getElementById('rocola-app-mount');
+document.addEventListener("DOMContentLoaded", function() {
+    const appMount = document.getElementById("rocola-app-mount");
+    const productGrid = document.getElementById("productGrid");
 
-    // Only initialize if the mount point exists and the user is on the Products page
-    if (!appMount) return;
-    appMount.style.display = 'flex'; // Reveal the UI shell
+    if (!appMount || !productGrid) return;
 
-    // 1. Locale Detection (Driven by Nikola's base.tmpl <html lang="...">)
-    const currentLang = document.documentElement.lang || 'hy';
+    // Display the app mount which might have been hidden by CSS originally
+    appMount.style.display = 'flex';
 
-    // 2. Cache-Busting Hourly Token (YYYY-MM-DD-HH)
-    const now = new Date();
-    const yy = now.getFullYear();
-    const mm = String(now.getMonth() + 1).padStart(2, '0');
-    const dd = String(now.getDate()).padStart(2, '0');
-    const hh = String(now.getHours()).padStart(2, '0');
-    const cacheToken = `${yy}-${mm}-${dd}-${hh}`;
+    const lang = document.documentElement.lang || 'hy';
+    const csvPath = `/assets/inventory_${lang}.csv`;
 
-    // Configuration
-    const CSV_URL = `/assets/inventory_${currentLang}.csv?v=${cacheToken}`;
-    let inventoryData = [];
+    let allProducts = [];
 
-    // DOM Elements
-    const grid = document.getElementById('productGrid');
-    const priceSlider = document.getElementById('priceRange');
-    const priceDisplay = document.getElementById('priceValue');
-    const sortSelect = document.getElementById('sortOrder');
+    // UI Elements
+    const minPriceNum = document.getElementById("minPriceNum");
+    const maxPriceNum = document.getElementById("maxPriceNum");
+    const minPriceBar = document.getElementById("minPriceBar");
+    const maxPriceBar = document.getElementById("maxPriceBar");
+    const sortOrder = document.getElementById("sortOrder");
 
-    // 3. Supabase RPC Blind Call (Global tracking across all pages)
-    window.trackProductView = function(sku) {
-        // REPLACE WITH YOUR SUPABASE CREDENTIALS
-        const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
-        const ANON_KEY = 'YOUR_ANON_KEY';
+    // Fetch and Parse CSV
+    fetch(csvPath)
+        .then(response => response.text())
+        .then(csvText => {
+            const lines = csvText.split('\n').filter(line => line.trim() !== '');
+            if (lines.length < 2) return;
 
-        fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_product_view`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'apikey': ANON_KEY,
-                'Authorization': `Bearer ${ANON_KEY}`
-            },
-            body: JSON.stringify({ p_sku: sku })
-        }).catch(err => console.warn('Analytics ping failed, safely ignored.'));
-    };
+            for (let i = 1; i < lines.length; i++) {
+                const data = lines[i].split(','); // match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+                if (data && data.length >= 4) {
+                    allProducts.push({
+                        code: data[0].replace(/(^"|"$)/g, ''),
+                        name: data[1].replace(/(^"|"$)/g, ''),
+                        price: parseFloat(data[2].replace(/(^"|"$)/g, '')),
+                        unit: data[3].replace(/(^"|"$)/g, '')
+                    });
+                }
+            }
 
-    // 4. CSV Fetching & Parsing
-    async function fetchInventory() {
-        try {
-            const response = await fetch(CSV_URL);
-            if (!response.ok) throw new Error('Inventory fetch failed');
+            // Dynamically set slider limits based on actual inventory prices
+            if (allProducts.length > 0) {
+                const prices = allProducts.map(p => p.price);
+                const maxP = Math.ceil(Math.max(...prices));
+                const minP = Math.floor(Math.min(...prices));
 
-            const textData = await response.text();
-            parseCSV(textData);
-            renderUI();
-        } catch (error) {
-            grid.innerHTML = `<p class="error-msg">Տվյալները հասանելի չեն (Data unavailable). Please try again later.</p>`;
-            console.error(error);
-        }
-    }
+                minPriceNum.min = minPriceBar.min = minP;
+                minPriceNum.max = minPriceBar.max = maxP;
+                maxPriceNum.min = maxPriceBar.min = minP;
+                maxPriceNum.max = maxPriceBar.max = maxP;
 
-    function parseCSV(csvText) {
-        // Expected headers: sku, title, price, stock, is_promo, image_url
-        const lines = csvText.split('\n').filter(line => line.trim() !== '');
-        const headers = lines[0].split(',');
+                // Initialize default values
+                minPriceNum.value = minPriceBar.value = minP;
+                maxPriceNum.value = maxPriceBar.value = maxP;
+            }
 
-        inventoryData = lines.slice(1).map(line => {
-            // Simple split assuming no internal commas in descriptions for speed
-            const values = line.split(',');
-            return {
-                sku: values[0],
-                title: values[1],
-                price: parseFloat(values[2]),
-                stock: parseInt(values[3], 10),
-                isPromo: values[4].trim().toLowerCase() === 'true',
-                imageUrl: values[5]
-            };
-        });
-    }
-
-    // 5. Dynamic Sorting, Filtering, and Rendering
-    function renderUI() {
-        const maxPrice = parseFloat(priceSlider.value);
-        const sortDirection = sortSelect.value;
-
-        // Filter out of stock & apply price range
-        let filtered = inventoryData.filter(item => item.stock > 0 && item.price <= maxPrice);
-
-        // Locale-aware sorting + Promotion Prioritization
-        filtered.sort((a, b) => {
-            // Priority 1: Promos bubble to the top
-            if (a.isPromo && !b.isPromo) return -1;
-            if (!a.isPromo && b.isPromo) return 1;
-
-            // Priority 2: Locale-aware alphabetical sort
-            const titleCompare = a.title.localeCompare(b.title, currentLang);
-            return sortDirection === 'asc' ? titleCompare : -titleCompare;
+            renderProducts();
+        })
+        .catch(error => {
+            console.error("Error loading inventory:", error);
+            productGrid.innerHTML = "<p>Error loading products.</p>";
         });
 
-        // DOM Injection
-        grid.innerHTML = filtered.map(item => `
-            <div class="product-card ${item.isPromo ? 'promo-active' : ''}" onclick="trackProductView('${item.sku}')">
-                ${item.isPromo ? '<span class="promo-badge">Ակցիա / Promo</span>' : ''}
-                <div class="product-info">
-                    <h4>${item.title}</h4>
-                    <p class="sku">SKU: ${item.sku}</p>
-                    <p class="price">${item.price.toLocaleString('hy-AM')} ֏</p>
-                </div>
-            </div>
-        `).join('');
-
-        if(filtered.length === 0) {
-            grid.innerHTML = '<p>Ապրանքներ չեն գտնվել (No products found).</p>';
+    // Synchronize inputs and sliders
+    function syncFilters(e) {
+        if (e.target.id === 'minPriceBar') {
+            minPriceNum.value = minPriceBar.value;
+        } else if (e.target.id === 'maxPriceBar') {
+            maxPriceNum.value = maxPriceBar.value;
+        } else if (e.target.id === 'minPriceNum') {
+            minPriceBar.value = minPriceNum.value || minPriceBar.min;
+        } else if (e.target.id === 'maxPriceNum') {
+            maxPriceBar.value = maxPriceNum.value || maxPriceBar.max;
         }
+
+        // Prevent minimum from exceeding maximum
+        if (parseFloat(minPriceBar.value) > parseFloat(maxPriceBar.value)) {
+            if (e.target.id.includes('min')) {
+                minPriceBar.value = maxPriceBar.value;
+                minPriceNum.value = maxPriceBar.value;
+            } else {
+                maxPriceBar.value = minPriceBar.value;
+                maxPriceNum.value = minPriceBar.value;
+            }
+        }
+
+        renderProducts();
     }
 
-    // Event Listeners for real-time reactivity
-    priceSlider.addEventListener('input', (e) => {
-        priceDisplay.textContent = e.target.value;
-        renderUI();
+    // Attach Event Listeners
+    [minPriceNum, maxPriceNum, minPriceBar, maxPriceBar].forEach(el => {
+        el.addEventListener('input', syncFilters);
     });
 
-    sortSelect.addEventListener('change', renderUI);
+    sortOrder.addEventListener('change', renderProducts);
 
-    // Boot the engine
-    fetchInventory();
+    // Render Function
+    function renderProducts() {
+        const minP = parseFloat(minPriceNum.value) || 0;
+        const maxP = parseFloat(maxPriceNum.value) || Infinity;
+        const sortVal = sortOrder.value;
+
+        // Apply Price Filter
+        let filtered = allProducts.filter(p => p.price >= minP && p.price <= maxP);
+
+        // Apply Alphabetical Sort
+        filtered.sort((a, b) => {
+            const nameA = a.name.toLowerCase();
+            const nameB = b.name.toLowerCase();
+            return sortVal === 'asc' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+        });
+
+        // Generate HTML
+        if (filtered.length === 0) {
+            productGrid.innerHTML = "<p>Այս գնային միջակայքում ապրանքներ չեն գտնվել (No products found in this price range).</p>";
+            return;
+        }
+
+        let html = '<div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">';
+        filtered.forEach(item => {
+            html += `
+                <div class="product-card" style="border: 1px solid #ddd; padding: 1rem; border-radius: 8px;">
+                    <div class="product-info">
+                        <span class="product-sku" style="font-size: 0.8rem; color: #666;">#${item.code}</span>
+                        <h3 class="product-title" style="margin: 0.5rem 0; font-size: 1.1rem;">${item.name}</h3>
+                        <div class="product-price" style="font-weight: bold; color: #2c3e50;">
+                            ${item.price.toFixed(2)} ֏ <span class="product-unit" style="font-size: 0.9rem; font-weight: normal;">/ ${item.unit}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        html += '</div>';
+        productGrid.innerHTML = html;
+    }
 });

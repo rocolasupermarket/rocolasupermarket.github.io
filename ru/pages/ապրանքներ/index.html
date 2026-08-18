@@ -74,40 +74,24 @@
 <article class="rocola-page-wrapper"><!-- SEO-Optimized Static Content (Injected from your .rst files) --><header class="page-header"><h1 class="p-name entry-title" itemprop="headline name">Товары и Инвентарь</h1>
     </header><div class="e-content entry-content" itemprop="articleBody text">
         <p>Добро пожаловать в каталог супермаркета «Рокола». Ознакомьтесь с нашим ассортиментом свежих продуктов, молочных изделий, выпечки и товаров для дома.</p>
-<div id="rocola-inventory-container">
-    <table class="table table-striped" id="inventory-table">
-<thead><tr>
-<th>Товар</th>
-                <th>Категория</th>
-                <th>Цена</th>
-                <th>Ед. изм.</th>
-            </tr></thead>
-<tbody id="inventory-tbody"><tr>
-<td colspan="4" class="text-center">Загрузка данных инвентаря...</td>
-            </tr></tbody>
-</table>
-</div>
-<!-- :
-
-  <script src="/assets/js/rocola-engine.js"></script>
-  <script>
-      document.addEventListener("DOMContentLoaded", function() {
-          if (typeof loadRocolaInventory === "function") {
-              loadRocolaInventory('/assets/inventory_ru.csv', 'inventory-tbody');
-        }
-    });
-</script> -->
     </div>
 
     <!-- Dynamic Supermarket UI Engine Shell -->
-    <!-- (This UI will only activate if the page contains a specific data-attribute or if we inject it intentionally in our .rst, but for safety, we build the shell here) -->
-    <div id="rocola-app-mount" class="rocola-app-container" style="display: none;">
+    <div id="rocola-app-mount" class="rocola-app-container">
 
         <aside class="rocola-filters"><h3>Ֆիլտրեր (Filters)</h3>
+
             <div class="filter-group">
-                <label for="priceRange">Max Price: <span id="priceValue">50000</span> AMD</label>
-                <input type="range" id="priceRange" min="0" max="50000" step="500" value="50000">
+                <label>Price Range (AMD)</label>
+                <div class="price-input-container" style="display: flex; gap: 10px; margin-bottom: 10px; align-items: center;">
+                    <input type="number" id="minPriceNum" style="width: 80px;" title="Minimum Price"><span> - </span>
+                    <input type="number" id="maxPriceNum" style="width: 80px;" title="Maximum Price">
 </div>
+                <div class="price-slider-container" style="display: flex; flex-direction: column; gap: 5px;">
+                    <input type="range" id="minPriceBar" title="Minimum Price Slider"><input type="range" id="maxPriceBar" title="Maximum Price Slider">
+</div>
+            </div>
+
             <div class="filter-group">
                 <label for="sortOrder">Sort Alphabetically</label>
                 <select id="sortOrder"><option value="asc">A -&gt; Z (Ա -&gt; Ֆ)</option>
