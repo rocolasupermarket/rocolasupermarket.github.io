@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
     const appMount = document.getElementById("rocola-app-mount");
     const productGrid = document.getElementById("productGrid");
@@ -17,7 +18,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const minPriceBar = document.getElementById("minPriceBar");
     const maxPriceBar = document.getElementById("maxPriceBar");
     const sortOrder = document.getElementById("sortOrder");
-    const productCounter = document.getElementById("productCounter"); // New Counter Element
+    const productCounter = document.getElementById("productCounter");
+
+    // Click Interceptor Function for Missing Slugs (Demo Mode)
+    window.handleProductClick = function(event, slug, productName) {
+        if (!slug || slug === "undefined" || slug.trim() === "") {
+            event.preventDefault(); // Stop navigation
+            alert("⚠️ Demo Notice: The detailed page and photos for '" + productName + "' are currently under preparation.");
+        }
+    };
 
     // Fetch and Parse CSV
     fetch(csvPath)
@@ -30,27 +39,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 const data = lines[i].split(',');
 
                 if (data && data.length >= 4) {
-                    // Extract fields from the back to safely bypass commas in the name
                     const fname = data.pop().replace(/(^"|"$)/g, '').trim();
                     const unit = data.pop().replace(/(^"|"$)/g, '').trim();
                     const priceStr = data.pop().replace(/(^"|"$)/g, '').trim();
-
-                    // Extract code from the front
                     const code = data.shift().replace(/(^"|"$)/g, '').trim();
-
-                    // The remaining parts belong to the name
                     const name = data.join(',').replace(/(^"|"$)/g, '').trim();
 
-                    // Ensure price is a valid number before adding
                     const priceNum = parseFloat(priceStr);
                     if (!isNaN(priceNum)) {
-                        allProducts.push({
-                            code: code,
-                            name: name,
-                            price: priceNum,
-                            unit: unit,
-                            fname: fname
-                        });
+                        allProducts.push({ code, name, price: priceNum, unit, fname });
                     }
                 }
             }
@@ -69,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 maxPriceNum.value = maxPriceBar.value = maxP;
             }
 
+            fillSliderTrack();
             renderProducts();
         })
         .catch(error => {
@@ -77,27 +75,54 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
     function syncFilters(e) {
+        let minVal = parseFloat(minPriceNum.value) || parseFloat(minPriceBar.min);
+        let maxVal = parseFloat(maxPriceNum.value) || parseFloat(maxPriceBar.max);
+
         if (e.target.id === 'minPriceBar') {
-            minPriceNum.value = minPriceBar.value;
-        } else if (e.target.id === 'maxPriceBar') {
-            maxPriceNum.value = maxPriceBar.value;
-        } else if (e.target.id === 'minPriceNum') {
-            minPriceBar.value = minPriceNum.value || minPriceBar.min;
-        } else if (e.target.id === 'maxPriceNum') {
-            maxPriceBar.value = maxPriceNum.value || maxPriceBar.max;
-        }
-
-        if (parseFloat(minPriceBar.value) > parseFloat(maxPriceBar.value)) {
-            if (e.target.id.includes('min')) {
+            minVal = parseFloat(minPriceBar.value);
+            if (minVal > parseFloat(maxPriceBar.value)) {
                 minPriceBar.value = maxPriceBar.value;
-                minPriceNum.value = maxPriceBar.value;
-            } else {
-                maxPriceBar.value = minPriceBar.value;
-                maxPriceNum.value = minPriceBar.value;
+                minVal = parseFloat(maxPriceBar.value);
             }
+            minPriceNum.value = minVal;
+        } else if (e.target.id === 'maxPriceBar') {
+            maxVal = parseFloat(maxPriceBar.value);
+            if (maxVal < parseFloat(minPriceBar.value)) {
+                maxPriceBar.value = minPriceBar.value;
+                maxVal = parseFloat(minPriceBar.value);
+            }
+            maxPriceNum.value = maxVal;
+        } else if (e.target.id === 'minPriceNum') {
+            if (minVal > parseFloat(maxPriceNum.value)) {
+                minVal = parseFloat(maxPriceNum.value);
+                minPriceNum.value = minVal;
+            }
+            minPriceBar.value = minVal;
+        } else if (e.target.id === 'maxPriceNum') {
+            if (maxVal < parseFloat(minPriceNum.value)) {
+                maxVal = parseFloat(minPriceNum.value);
+                maxPriceNum.value = maxVal;
+            }
+            maxPriceBar.value = maxVal;
         }
 
+        fillSliderTrack();
         renderProducts();
+    }
+
+    function fillSliderTrack() {
+        const track = document.getElementById("sliderTrack");
+        if (!track) return;
+
+        const max = parseFloat(maxPriceBar.max) || 100;
+        const min = parseFloat(minPriceBar.min) || 0;
+        const currentMin = parseFloat(minPriceBar.value) || 0;
+        const currentMax = parseFloat(maxPriceBar.value) || 100;
+
+        const percent1 = ((currentMin - min) / (max - min)) * 100;
+        const percent2 = ((currentMax - min) / (max - min)) * 100;
+
+        track.style.background = `linear-gradient(to right, #ddd ${percent1}%, var(--rocola-green-primary) ${percent1}%, var(--rocola-green-primary) ${percent2}%, #ddd ${percent2}%)`;
     }
 
     [minPriceNum, maxPriceNum, minPriceBar, maxPriceBar].forEach(el => {
@@ -113,13 +138,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let filtered = allProducts.filter(p => p.price >= minP && p.price <= maxP);
 
+        // CHANGED: Expanded sort logic to handle price_asc and price_desc
         filtered.sort((a, b) => {
-            const nameA = a.name.toLowerCase();
-            const nameB = b.name.toLowerCase();
-            return sortVal === 'asc' ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
+            if (sortVal === 'asc') {
+                return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+            } else if (sortVal === 'desc') {
+                return b.name.toLowerCase().localeCompare(a.name.toLowerCase());
+            } else if (sortVal === 'price_asc') {
+                return a.price - b.price;
+            } else if (sortVal === 'price_desc') {
+                return b.price - a.price;
+            }
+            return 0;
         });
 
-        // Update the Product Counter
         if (productCounter) {
             productCounter.innerHTML = `<strong>${filtered.length}</strong>`;
         }
@@ -129,14 +161,25 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        let html = '<div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">';
+        let html = '<div class="rocola-product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; width: 100%;">';
+
         filtered.forEach(item => {
             const isClickable = item.fname && item.fname.length > 0;
+            const folderCode = parseInt(item.code, 10);
+            const safeName = item.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
             const bgColor = isClickable ? '#e1f5fe' : '#ffffff';
-            const hoverStyle = isClickable ? 'cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.15);' : 'box-shadow: 0 1px 3px rgba(0,0,0,0.05);';
 
             let cardHtml = `
-                <div class="product-card" style="background-color: ${bgColor}; border: 1px solid #ddd; padding: 1rem; border-radius: 8px; height: 100%; transition: box-shadow 0.2s; ${hoverStyle}">
+                <div class="product-card"
+                     style="background-color: ${bgColor}; border: 1px solid #ddd; padding: 1rem; border-radius: 8px; height: 100%; transition: box-shadow 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.05); cursor: pointer;"
+                     onmouseover="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.15)'"
+                     onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,0.05)'">
+
+                    <img src="/images/products/${folderCode}/1.jpg"
+                         alt="${safeName}"
+                         onerror="this.onerror=null; this.src='/images/products/default.jpg';"
+                         style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;" />
+
                     <div class="product-info">
                         <span class="product-sku" style="font-size: 0.8rem; color: #666;">#${item.code}</span>
                         <h3 class="product-title" style="margin: 0.5rem 0; font-size: 1.1rem;">${item.name}</h3>
@@ -147,12 +190,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             `;
 
-            if (isClickable) {
-                html += `<a href="../products/${item.fname}/" style="text-decoration: none; color: inherit; display: block;">${cardHtml}</a>`;
-            } else {
-                html += `<div>${cardHtml}</div>`;
-            }
+            const targetUrl = isClickable ? `../products/${item.fname}/` : "#";
+
+            html += `
+                <a href="${targetUrl}"
+                   onclick="handleProductClick(event, '${item.fname || ''}', '${safeName}')"
+                   style="text-decoration: none; color: inherit; display: block;">
+                    ${cardHtml}
+                </a>
+            `;
         });
+
         html += '</div>';
         productGrid.innerHTML = html;
     }
