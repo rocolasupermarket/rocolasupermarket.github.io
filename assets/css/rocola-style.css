@@ -15,6 +15,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Force all containers to span the full viewport width */
 .container, .container-fluid {
     max-width: 100% !important;
     padding-left: 2%;
@@ -67,13 +68,19 @@ body {
     accent-color: var(--rocola-green-primary);
 }
 
-/* Responsive Product Grid (Auto-Fit for variable columns) */
-.rocola-product-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    width: 100%;
+section.rocola-product-grid {
+  display: grid;
+  --max-columns: 15;
+  --gap: 1rem;
+
+  --gap-count: calc(var(--max-columns) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--gap));
+  --max-item-width: calc((100% - var(--total-gap-width)) / var(--max-columns));
+
+  grid-gap: var(--gap);
+  /* The item can shrink down to 200px, but its "maximum minimum" is restricted by --max-item-width */
+  grid-template-columns: repeat(auto-fill, minmax(max(200px, var(--max-item-width)), 1fr));
+  width: 100%;
 }
 
 .product-card {
@@ -95,7 +102,6 @@ body {
     box-shadow: 0 6px 12px rgba(46, 125, 50, 0.15);
     border-color: var(--rocola-green-primary);
 }
-
 .product-info h4 {
     margin: 0 0 0.5rem 0;
     color: var(--rocola-green-dark);
@@ -128,7 +134,17 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Mobile Responsiveness */
+.product-card.promo-active {
+    border: 2px solid var(--rocola-accent);
+}
+
+/* Tablet & Mobile Responsiveness */
+@media (max-width: 1200px) {
+    .rocola-product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .rocola-app-container {
         flex-direction: column;
@@ -136,6 +152,18 @@ body {
     .rocola-filters {
         width: 100%;
     }
+    .rocola-product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.h3-equivalent {
+  font-size: 1.17em;
+  font-weight: bold;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 
 /* Dual Range Slider Styles */

@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
     const appMount = document.getElementById("rocola-app-mount");
     const productGrid = document.getElementById("productGrid");
@@ -161,7 +160,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
 
-        let html = '<div class="rocola-product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; width: 100%;">';
+        let html = '';
 
         filtered.forEach(item => {
             const isClickable = item.fname && item.fname.length > 0;
@@ -201,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
         });
 
-        html += '</div>';
+        html += '';
         productGrid.innerHTML = html;
     }
 });
