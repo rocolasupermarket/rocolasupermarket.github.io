@@ -1,0 +1,112 @@
+Code,Name
+010000,Fresh Produce & Meat
+010100,Vegetables and Fruits
+010101,Tropical fruits
+010102,Vegetables
+010103,Fruits & Berries
+010200,Fresh Meat
+010201,Beef & Veal
+010202,Pork
+010203,Lamb
+010204,Poultry
+010300,Fish and Seafood
+010301,Fresh fish
+010302,Frozen fish and seafood
+010303,Smoked & Dried fish
+010304,Fresh and Canned seafood
+010305,Caviar
+020000,Dairy Eggs & Bakery
+020100,Milk products and Eggs
+020101,Milk & Condensed milk
+020102,Cheese & Cottage cheese
+020103,Butter and Margarine
+020104,Sour cream & Cream
+020105,Yogurt & Matsoun
+020106,Kefir Tan and Okroshka
+020107,Eggs
+020200,Bread and Biscuits (Bakery)
+020201,Bread and Pita (Lavash)
+020202,Bakery & Pastry
+020203,Cakes
+030000,Grocery & Pantry
+030100,Grocery (Staples)
+030101,Pasta & Rice
+030102,Grains & Legumes
+030103,Flour
+030104,Oil and Ghee
+030105,Sugar Salt Soda Vinegar
+030106,Spices & Seasonings
+030107,Breakfast cereals & Flakes
+030108,Ketchup Mayonnaise and Sauces
+030200,Canned Food
+030201,Canned vegetables & Tomato paste
+030202,Olives
+030203,Canned meat and Pastes
+030204,Canned fish
+030205,Canned fruits
+030300,Quick-cooking & Instant Food
+030301,Soup & Broth
+030302,Vermicelli & Noodles
+030303,Semi-cooked products
+040000,Sweets & Snacks
+040100,Sweets
+040101,Chocolate & Chocolate collections
+040102,Jelly Marshmallow and Chewing gum
+040103,Pastry and Crackers
+040104,Honey
+040200,Snacks
+040201,Chips and Popcorn
+040202,Dried fruits and Nuts
+040203,Seeds and Sticks
+040300,Meat Delicacies
+040301,Basturma and Sudjuk
+040302,Sausages (Boiled Smoked)
+040400,Diabetic Products
+040401,Sugar substitutes
+040402,Diabetic Sweets & Desserts
+050000,Beverages & Alcohol
+050100,Juice and Beverages
+050101,Water (Sparkling & Still)
+050102,Natural juice
+050103,Refreshing beverages (Soda)
+050104,Compote and Syrup
+050200,Tea and Coffee
+050201,Coffee
+050202,Tea
+050203,Hot chocolate & Cocoa
+050300,Alcoholic Beverages
+050301,Wine Champaign and Sparkling wine
+050302,Beer
+050303,Brandy & Cognac
+050304,Vodka
+050305,Whiskey Rum & Tequila
+050306,Liqueur & Vermouth
+060000,Frozen & Ready Meals
+060100,Frozen Products
+060101,Vegetables Fruits Berries
+060102,Semi-cooked meat & poultry
+060103,Ice cream & Ice
+060200,Ready Meals (Deli)
+060201,Salads and Appetizers
+060202,Hot dishes & Fast food
+070000,Household Health & Other
+070100,Household Goods & Chemicals
+070101,Laundry detergent & Dishwashing
+070102,Air fresheners
+070103,Paper products
+070104,Cleaning tools
+070200,Health and Beauty
+070201,Body and Skin care
+070202,Hair care
+070203,Oral care
+070204,Perfumes and Cosmetics
+070205,Intimate hygiene
+070300,Baby Care & Food
+070301,Baby food
+070302,Accessories for kids
+070400,Pet Supplies
+070401,Dog Food
+070402,Cat Food
+070500,Tobacco & Accessories
+070501,Cigarettes & Smoke-free products
+070502,Cigars & Tobacco
