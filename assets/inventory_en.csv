@@ -1,4 +1,4 @@
-code,name,price,unit,Category,slug
+code,name,price,unit,category,slug
 00001450,Chocolate bar 'Lindt' Excellence dark cocoa 99% 50g,3310.00,Pcs,040101-050203,
 00002225,Drink 'Mont Berry' aloe vera 1.5L,1050.00,Pcs,010103-050103,
 00002790,Beer 'Zatecky Gus' c/can 0.45L,570.00,Pcs,050302,
@@ -129,3 +129,18 @@ code,name,price,unit,Category,slug
 00009431,Milk Dili 3.2% 750ml,900.00,pcs,020101,կաթ-դիլի-3.2-750մլ
 00008591,Chewing Gum 5 Fresh Mint,290.00,pcs,010102-040102,մաստակ-5-թարմ-անանուխ
 00006058,Chocolate Bar Rossiya Dark Chocolate 75g,430.00,pcs,040101,շոկոլադե-սալիկ-ռոսիյա-մուգ-շոկոլադ-75գ
+00007683,Mineral water Jermuk millennium pet 1L,310,piece,050101,հանքային-ջուր-ջերմուկ-1լ
+00007939,Carbonated drink Fanta orange 1.5L,760,piece,050103,ֆանտա-նարինջ-1-5լ
+00011952,Drinkable yogurt Yeremyan raspberry 0.8L,780,piece,020105,յոգուրտ-երեմյան-0-8լ
+00011238,Sour cream Tamara 18% 900g,1420,piece,020104,թթվասեր-թամարա-18-900գր
+00013421,Milk Marianna pasteurized 3.2% 950ml,530,piece,020101,կաթ-մարիաննա-3-2
+00015116,Sausage cooked-smoked Tnak Polish kg,2750,kg,040302,երշիկ-տնակ-լեհական
+00018023,Minced meat Gandzasar 900g,2290,piece,010201,աղացած-միս-գանձասար
+00009157,Persimmon Israel kg,7150,kg,010103,արքայանարինջ-իզրայել
+00008811,Pineapple kg,1110,kg,010103,արքայախնձոր
+00005695,Soap Protex cream 4+1 350g,1260,piece,070201,օճառ-պրոտեքս
+00014348,Cottage cheese Chanakh non-fat 180g,600,piece,020102,կաթնաշոռ-չանախ-անյուղ
+00019988,Apple Paradise kg,2210,kg,010103,խնձոր-դրախտային
+00012756,Lavash Sevan with charcoal cut yeast-free 300g,500,piece,020201,լավաշ-սևանի-ածուխով
+00006754,Chocolate bar Grand Candy dark chocolate 80% 90g,860,piece,040101,շոկոլադ-գրանդ-քենդի
+00015688,Eggs Arzni chu-chu #02 6pcs,590,piece,020107,հավկիթ-արզնի-6հատ

@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function() {
                      onmouseover="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.15)'"
                      onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,0.05)'">
 
-                    <img src="/images/products/${folderCode}/1.jpg"
+                    <img src="/images/products/${folderCode}/1.avif"
                          alt="${safeName}"
                          onerror="this.onerror=null; this.src='/images/products/default.jpg';"
                          style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;" />
