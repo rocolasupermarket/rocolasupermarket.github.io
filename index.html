@@ -89,16 +89,20 @@
     <!-- Dynamic Supermarket UI Engine Shell -->
     <div id="rocola-app-mount" class="rocola-app-container">
 
-        <aside class="rocola-filters"><h3>Ֆիլտրեր (Filters)</h3>
+        <aside class="rocola-filters"><!-- Search Group (Mako Syntax for Translations) --><div class="filter-group search-group" style="margin-bottom: 15px;">
+                <input type="text" id="productSearch" placeholder="Որոնել ապրանքներ..." style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; font-size: 1rem;">
+</div>
+
+            <h3>Ֆիլտրեր</h3>
 
             <!-- Product Counter Group -->
             <div class="filter-group counter-group" style="margin-bottom: 15px; padding: 10px; background: #f8f9fa; border-radius: 5px; border: 1px solid #e9ecef;">
-                <span style="font-size: 1rem; color: #495057;">Ապրանքների քանակը (Total items): </span>
-                <span id="productCounter" style="font-size: 1.1rem; color: #007bff; margin-left: 5px;">Բեռնվում է...</span>
+                <span style="font-size: 1rem; color: #495057;">Ապրանքների քանակը: </span>
+                <span id="productCounter" style="font-size: 1.1rem; color: #007bff; margin-left: 5px;">...</span>
             </div>
 
             <div class="filter-group">
-                <label>Price Range (AMD)</label>
+                <label>Գնային միջակայք (AMD)</label>
                 <div class="price-input-container" style="display: flex; gap: 10px; margin-bottom: 15px; align-items: center;">
                     <input type="number" id="minPriceNum" style="width: 80px;" title="Minimum Price"><span> - </span>
                     <input type="number" id="maxPriceNum" style="width: 80px;" title="Maximum Price">
@@ -110,13 +114,16 @@
             </div>
 
             <div class="filter-group">
-                <label for="sortOrder">Sort / Տեսակավորել</label>
-                <select id="sortOrder" style="width: 100%; padding: 5px;"><option value="asc">A -&gt; Z (Ա -&gt; Ֆ)</option>
-<option value="desc">Z -&gt; A (Ֆ -&gt; Ա)</option>
-<option value="price_asc">Price: Low to High (Գինը՝ աճման կարգով)</option>
-<option value="price_desc">Price: High to Low (Գինը՝ նվազման կարգով)</option></select>
+                <label for="sortOrder">Տեսակավորել</label>
+                <select id="sortOrder" style="width: 100%; padding: 5px;"><option value="asc">Ա -&gt; Ֆ</option>
+<option value="desc">Ֆ -&gt; Ա</option>
+<option value="price_asc">Գինը՝ աճման կարգով</option>
+<option value="price_desc">Գինը՝ նվազման կարգով</option></select>
 </div>
-        </aside><!-- Product Grid Container populated by rocola-engine.js --><section id="productGrid" class="rocola-product-grid"><p>Բեռնվում է ապրանքացանկը...</p>
+            <div>
+              Ծրագրավորող: <a href="https://github.com/yoosofan" target="_blank"> Ahmad Yoosofan </a>
+            </div>
+        </aside><!-- Product Grid Container populated by rocola-engine.js --><section id="productGrid" class="rocola-product-grid"><p>...</p>
         </section>
 </div>
 

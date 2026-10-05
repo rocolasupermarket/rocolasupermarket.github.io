@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const maxPriceBar = document.getElementById("maxPriceBar");
     const sortOrder = document.getElementById("sortOrder");
     const productCounter = document.getElementById("productCounter");
+    const productSearch = document.getElementById("productSearch");
 
     window.handleProductClick = function(event, slug, productName) {
         if (!slug || slug === "undefined" || slug.trim() === "") {
@@ -42,9 +43,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 const parts = catLines[i].split(',');
                 if (parts.length >= 2) {
                     const code = parts[0].trim();
-                    const name = parts.slice(1).join(',').trim(); // Join in case name had internal commas
+                    const name = parts.slice(1).join(',').trim();
 
-                    // Automatically determine level based on the math format
                     let level = 3;
                     if (code.endsWith('0000')) {
                         level = 1;
@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const catGroup = document.createElement('div');
             catGroup.className = 'filter-group category-group';
 
-            // Set dropdown label based on language
             const catLabel = lang === 'hy' ? 'Կատեգորիա' : (lang === 'ru' ? 'Категория' : 'Category');
             const allLabel = lang === 'hy' ? 'Բոլորը' : (lang === 'ru' ? 'Все' : 'All Categories');
 
@@ -72,13 +71,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 <option value="all">${allLabel}</option>`;
 
             allCategories.forEach(c => {
-                // Add spacing prefix based on level depth
                 const indent = '&nbsp;'.repeat((c.level - 1) * 4);
                 selectHtml += `<option value="${c.code}">${indent}${c.name}</option>`;
             });
             selectHtml += `</select>`;
             catGroup.innerHTML = selectHtml;
-            filterContainer.prepend(catGroup);
+
+            // Insert Category Dropdown directly after the Search Bar
+            const searchGroup = document.querySelector('.search-group');
+            if (searchGroup) {
+                searchGroup.parentNode.insertBefore(catGroup, searchGroup.nextSibling);
+            } else {
+                filterContainer.prepend(catGroup);
+            }
 
             document.getElementById('categoryFilter').addEventListener('change', renderProducts);
         }
@@ -96,15 +101,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
                     let unit, priceStr, categoryStr = "";
 
-                    // Smart detection: check if col2 is Price (Number) and col3 is Unit (String)
                     if (!isNaN(parseFloat(col2)) && isNaN(parseFloat(col3))) {
                         priceStr = col2;
                         unit = col3;
-                        categoryStr = col4; // 6-column mode
+                        categoryStr = col4;
                     } else {
                         priceStr = col3;
                         unit = col4;
-                        parts.push(col2); // 5-column mode, put name fragment back
+                        parts.push(col2);
                     }
 
                     const code = parts.shift().replace(/(^"|"$)/g, '').trim();
@@ -198,6 +202,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (sortOrder) sortOrder.addEventListener('change', renderProducts);
 
+    // Listen for live search input
+    if (productSearch) productSearch.addEventListener('input', renderProducts);
+
     function renderProducts() {
         const minP = minPriceNum ? (parseFloat(minPriceNum.value) || 0) : 0;
         const maxP = maxPriceNum ? (parseFloat(maxPriceNum.value) || Infinity) : Infinity;
@@ -206,16 +213,23 @@ document.addEventListener("DOMContentLoaded", function() {
         const catSelect = document.getElementById('categoryFilter');
         const selectedCat = catSelect ? catSelect.value : 'all';
 
+        const searchQuery = productSearch ? productSearch.value.toLowerCase().trim() : '';
+
         // 1. Filter by Price
         let filtered = allProducts.filter(p => p.price >= minP && p.price <= maxP);
 
-        // 2. Filter by Category Code Prefix
+        // 2. Filter by Search Query
+        if (searchQuery) {
+            filtered = filtered.filter(p => p.name.toLowerCase().includes(searchQuery));
+        }
+
+        // 3. Filter by Category Code Prefix
         if (selectedCat !== 'all') {
             let prefix = selectedCat;
             if (prefix.endsWith('0000')) {
-                prefix = prefix.substring(0, 2); // Top level category
+                prefix = prefix.substring(0, 2);
             } else if (prefix.endsWith('00')) {
-                prefix = prefix.substring(0, 4); // Sub level category
+                prefix = prefix.substring(0, 4);
             }
 
             filtered = filtered.filter(p => {
@@ -225,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
 
-        // 3. Sort Results
+        // 4. Sort Results
         filtered.sort((a, b) => {
             if (sortVal === 'asc') return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
             if (sortVal === 'desc') return b.name.toLowerCase().localeCompare(a.name.toLowerCase());
@@ -284,7 +298,6 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
         });
 
-        html += '';
         productGrid.innerHTML = html;
     }
 });
