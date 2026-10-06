@@ -49,11 +49,21 @@
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
             <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
-<!-- Theme Toggle Button --><li class="nav-item">
+<!-- Global Shopping Cart Icon --><li class="nav-item" style="display: flex; align-items: center; margin-right: 15px;">
+                        
+                        <a href="../../cart/" style="text-decoration: none; position: relative; display: inline-block;">
+                            <span style="font-size: 1.5rem;" title="Cart">🛒</span>
+                            <span id="cart-count-badge" style="background: var(--rocola-accent); color: var(--rocola-green-dark); font-weight: bold; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; position: absolute; top: -5px; right: -10px; display: none; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">0</span>
+                        </a>
+                    </li>
+
+                    <!-- Theme Toggle Button -->
+                    <li class="nav-item">
                         <button id="theme-toggle" class="nav-link theme-toggle-btn" title="Toggle Light/Dark Mode">
                             <span id="theme-icon">🌓</span>
                         </button>
                     </li>
+
 
                     <!-- Fixed Dynamic Language Switcher -->
                     
@@ -142,6 +152,20 @@
             }
             updateIcon();
         });
+    });
+    </script><!-- Global Cart Badge Initialization --><script>
+    document.addEventListener("DOMContentLoaded", function() {
+        window.updateCartBadge = function() {
+            const badge = document.getElementById('cart-count-badge');
+            if (badge) {
+                let cart = JSON.parse(localStorage.getItem('rocola_cart')) || {};
+                const totalUniqueItems = Object.keys(cart).length;
+                badge.innerText = totalUniqueItems;
+                badge.style.display = totalUniqueItems > 0 ? 'inline-block' : 'none';
+            }
+        };
+        // Run immediately on page load to set the correct number globally
+        window.updateCartBadge();
     });
     </script>
 </body>

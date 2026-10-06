@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Записи с тегом Новости | Супермаркет «Рокола»</title>
+<title>Записи с тегом Новости | Супермаркет Рокола</title>
 <link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <link href="../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
 <link href="../../../assets/css/rst.css" rel="stylesheet" type="text/css">
@@ -44,16 +44,26 @@
           <div class="col-md-6 col-xs-10 col-sm-10 bootblog4-brand" style="width: auto;">
             <a class="navbar-brand blog-header-logo text-dark" href="../../">
 
-            <span id="blog-title">Супермаркет «Рокола»</span>
+            <span id="blog-title">Супермаркет Рокола</span>
         </a>
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
             <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
-<!-- Theme Toggle Button --><li class="nav-item">
+<!-- Global Shopping Cart Icon --><li class="nav-item" style="display: flex; align-items: center; margin-right: 15px;">
+                        
+                        <a href="../../%D0%BA%D0%BE%D1%80%D0%B7%D0%B8%D0%BD%D0%B0/" style="text-decoration: none; position: relative; display: inline-block;">
+                            <span style="font-size: 1.5rem;" title="Корзина">🛒</span>
+                            <span id="cart-count-badge" style="background: var(--rocola-accent); color: var(--rocola-green-dark); font-weight: bold; border-radius: 50%; padding: 2px 6px; font-size: 0.75rem; position: absolute; top: -5px; right: -10px; display: none; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">0</span>
+                        </a>
+                    </li>
+
+                    <!-- Theme Toggle Button -->
+                    <li class="nav-item">
                         <button id="theme-toggle" class="nav-link theme-toggle-btn" title="Toggle Light/Dark Mode">
                             <span id="theme-icon">🌓</span>
                         </button>
                     </li>
+
 
                     <!-- Fixed Dynamic Language Switcher -->
                     
@@ -150,6 +160,20 @@
             }
             updateIcon();
         });
+    });
+    </script><!-- Global Cart Badge Initialization --><script>
+    document.addEventListener("DOMContentLoaded", function() {
+        window.updateCartBadge = function() {
+            const badge = document.getElementById('cart-count-badge');
+            if (badge) {
+                let cart = JSON.parse(localStorage.getItem('rocola_cart')) || {};
+                const totalUniqueItems = Object.keys(cart).length;
+                badge.innerText = totalUniqueItems;
+                badge.style.display = totalUniqueItems > 0 ? 'inline-block' : 'none';
+            }
+        };
+        // Run immediately on page load to set the correct number globally
+        window.updateCartBadge();
     });
     </script>
 </body>

@@ -16,6 +16,45 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let currentPage = 1;
 
+    // --- CART LOGIC ---
+    let cart = JSON.parse(localStorage.getItem('rocola_cart')) || {};
+
+    /*window.updateCartBadge = function() {
+        const badge = document.getElementById('cart-count-badge');
+        if (badge) {
+            const totalUniqueItems = Object.keys(cart).length;
+            badge.innerText = totalUniqueItems;
+            badge.style.display = totalUniqueItems > 0 ? 'inline-block' : 'none';
+        }
+    };
+
+    updateCartBadge(); // Run on page load
+    */
+
+    window.modifyCart = function(event, code, action, price, name, unit) {
+        event.preventDefault();
+        event.stopPropagation(); // Prevents navigating to the product page when clicking buttons
+
+        if (!cart[code]) {
+            if (action === 'add' || action === 'increase') {
+                cart[code] = { quantity: 1, price: price, name: name, unit: unit };
+            }
+        } else {
+            if (action === 'increase') {
+                cart[code].quantity += 1;
+            } else if (action === 'decrease') {
+                cart[code].quantity -= 1;
+                if (cart[code].quantity <= 0) delete cart[code];
+            }
+        }
+
+        localStorage.setItem('rocola_cart', JSON.stringify(cart));
+        updateCartBadge();
+
+        // Re-render the grid instantly to update the button states
+        if (document.getElementById("productGrid")) renderProducts();
+    };
+
     // UI Elements
     const minPriceNum = document.getElementById("minPriceNum");
     const maxPriceNum = document.getElementById("maxPriceNum");
@@ -313,11 +352,34 @@ document.addEventListener("DOMContentLoaded", function() {
         const paginatedItems = filtered.slice(startIndex, endIndex);
 
         let html = '';
+
         paginatedItems.forEach(item => {
             const isClickable = item.fname && item.fname.length > 0;
             const folderCode = parseInt(item.code, 10);
             const safeName = item.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
             const bgColor = isClickable ? 'var(--bg-clickable)' : 'var(--bg-card)';
+            const targetUrl = isClickable ? `../products/${item.fname}/` : "#";
+
+            // Determine Cart Button State
+            const inCart = cart[item.code] ? cart[item.code].quantity : 0;
+            const addLabel = lang === 'hy' ? 'Ավելացնել զամբյուղ' : (lang === 'ru' ? 'В корзину' : 'Add to Cart');
+
+            let cartControls = '';
+            if (inCart > 0) {
+                cartControls = `
+                    <div class="cart-controls" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; background: var(--bg-main); border-radius: 4px; padding: 4px; border: 1px solid var(--border-color);">
+                        <button onclick="modifyCart(event, '${item.code}', 'decrease')" style="background: var(--rocola-green-primary); color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 1.1rem; line-height: 1;">-</button>
+                        <span style="font-weight: bold; font-size: 1.1rem; color: var(--rocola-green-dark);">${inCart}</span>
+                        <button onclick="modifyCart(event, '${item.code}', 'increase')" style="background: var(--rocola-green-primary); color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 1.1rem; line-height: 1;">+</button>
+                    </div>
+                `;
+            } else {
+                cartControls = `
+                    <button onclick="modifyCart(event, '${item.code}', 'add', ${item.price}, '${safeName}', '${item.unit}')" style="width: 100%; margin-top: 10px; background: var(--rocola-accent); color: var(--rocola-green-dark); font-weight: bold; border: none; padding: 8px; border-radius: 4px; cursor: pointer; transition: opacity 0.2s;">
+                        🛒 ${addLabel}
+                    </button>
+                `;
+            }
 
             let cardHtml = `
                 <div class="product-card"
@@ -325,29 +387,33 @@ document.addEventListener("DOMContentLoaded", function() {
                      onmouseover="this.style.boxShadow='0 4px 8px var(--shadow-hover)'"
                      onmouseout="this.style.boxShadow='0 1px 3px var(--shadow-color)'">
 
-                    <img src="/images/products/${folderCode}/1.avif"
-                         alt="${safeName}"
-                         onerror="this.onerror=null; this.src='/images/products/default.jpg';"
-                         style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;" />
+                    <!-- Product Clickable Area -->
+                    <a href="${targetUrl}"
+                       onclick="handleProductClick(event, '${item.fname || ''}', '${safeName}')"
+                       style="text-decoration: none; color: inherit; display: block; flex-grow: 1;">
 
-                    <div class="product-info">
-                        <span class="product-sku" style="font-size: 0.8rem; color: var(--text-muted);">#${item.code}</span>
-                        <h3 class="product-title" style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--text-dark);">${item.name}</h3>
-                        <div class="product-price" style="font-weight: bold; color: var(--rocola-green-primary);">
-                            ${item.price.toFixed(2)} ֏ <span class="product-unit" style="font-size: 0.9rem; font-weight: normal; color: var(--text-dark);">/ ${item.unit}</span>
+                        <img src="/images/products/${folderCode}/1.avif"
+                             alt="${safeName}"
+                             onerror="this.onerror=null; this.src='/images/products/default.jpg';"
+                             style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;" />
+
+                        <div class="product-info">
+                            <span class="product-sku" style="font-size: 0.8rem; color: var(--text-muted);">#${item.code}</span>
+                            <h3 class="product-title" style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--text-dark);">${item.name}</h3>
+                            <div class="product-price" style="font-weight: bold; color: var(--rocola-green-primary);">
+                                ${item.price.toFixed(2)} ֏ <span class="product-unit" style="font-size: 0.9rem; font-weight: normal; color: var(--text-dark);">/ ${item.unit}</span>
+                            </div>
                         </div>
+                    </a>
+
+                    <!-- Dedicated Cart Area -->
+                    <div>
+                        ${cartControls}
                     </div>
                 </div>
             `;
 
-            const targetUrl = isClickable ? `../products/${item.fname}/` : "#";
-            html += `
-                <a href="${targetUrl}"
-                   onclick="handleProductClick(event, '${item.fname || ''}', '${safeName}')"
-                   style="text-decoration: none; color: inherit; display: block;">
-                    ${cardHtml}
-                </a>
-            `;
+            html += cardHtml;
         });
 
         productGrid.innerHTML = html;
