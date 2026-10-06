@@ -14,12 +14,21 @@ document.addEventListener("DOMContentLoaded", function() {
     let allProducts = [];
     let allCategories = [];
 
+    let currentPage = 1;
+
     // UI Elements
     const minPriceNum = document.getElementById("minPriceNum");
     const maxPriceNum = document.getElementById("maxPriceNum");
     const minPriceBar = document.getElementById("minPriceBar");
     const maxPriceBar = document.getElementById("maxPriceBar");
-    const sortOrder = document.getElementById("sortOrder");
+
+    const itemsPerPageInput = document.getElementById("itemsPerPage");
+    const paginationContainer = document.getElementById("paginationContainer");
+
+    //const sortOrder = document.getElementById("sortOrder");
+    const sortNameOrder = document.getElementById("sortNameOrder");
+    const sortPriceOrder = document.getElementById("sortPriceOrder");
+
     const productCounter = document.getElementById("productCounter");
     const productSearch = document.getElementById("productSearch");
 
@@ -85,7 +94,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 filterContainer.prepend(catGroup);
             }
 
-            document.getElementById('categoryFilter').addEventListener('change', renderProducts);
+            document.getElementById('categoryFilter').addEventListener('change', () => { currentPage = 1; renderProducts(); });
+
         }
 
         // --- PARSE INVENTORY ---
@@ -196,19 +206,39 @@ document.addEventListener("DOMContentLoaded", function() {
         track.style.background = `linear-gradient(to right, #ddd ${percent1}%, var(--rocola-green-primary) ${percent1}%, var(--rocola-green-primary) ${percent2}%, #ddd ${percent2}%)`;
     }
 
+    const resetPageAndRender = () => { currentPage = 1; renderProducts(); };
+
     [minPriceNum, maxPriceNum, minPriceBar, maxPriceBar].forEach(el => {
-        if (el) el.addEventListener('input', syncFilters);
+        if (el) el.addEventListener('input', (e) => { syncFilters(e); currentPage = 1; });
     });
 
-    if (sortOrder) sortOrder.addEventListener('change', renderProducts);
+    if (sortNameOrder) sortNameOrder.addEventListener('change', () => {
+      if (sortNameOrder.value !== 'none') sortPriceOrder.value = 'none';
+      resetPageAndRender();
+    });
+    if (sortPriceOrder) sortPriceOrder.addEventListener('change', () => {
+      if (sortPriceOrder.value !== 'none') sortNameOrder.value = 'none';
+      resetPageAndRender();
+    });
 
     // Listen for live search input
-    if (productSearch) productSearch.addEventListener('input', renderProducts);
+    if (productSearch) productSearch.addEventListener('input', resetPageAndRender);
+    if (itemsPerPageInput) itemsPerPageInput.addEventListener('change', resetPageAndRender);
+
+    // Add pagination click handler to the window object
+    window.goToPage = function(page) {
+        currentPage = page;
+        renderProducts();
+        document.getElementById("rocola-app-mount").scrollIntoView({ behavior: 'smooth' });
+    };
 
     function renderProducts() {
         const minP = minPriceNum ? (parseFloat(minPriceNum.value) || 0) : 0;
         const maxP = maxPriceNum ? (parseFloat(maxPriceNum.value) || Infinity) : Infinity;
-        const sortVal = sortOrder ? sortOrder.value : 'asc';
+        //const sortVal = sortOrder ? sortOrder.value : 'asc';
+        const sortNameVal = sortNameOrder ? sortNameOrder.value : 'none';
+        const sortPriceVal = sortPriceOrder ? sortPriceOrder.value : 'none';
+
 
         const catSelect = document.getElementById('categoryFilter');
         const selectedCat = catSelect ? catSelect.value : 'all';
@@ -240,13 +270,24 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // 4. Sort Results
-        filtered.sort((a, b) => {
+        /*filtered.sort((a, b) => {
             if (sortVal === 'asc') return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
             if (sortVal === 'desc') return b.name.toLowerCase().localeCompare(a.name.toLowerCase());
             if (sortVal === 'price_asc') return a.price - b.price;
             if (sortVal === 'price_desc') return b.price - a.price;
             return 0;
-        });
+        });*/
+
+        // 4. Sort Results (Preserve CSV order if 'none' is selected)
+        if (sortNameVal !== 'none' || sortPriceVal !== 'none') {
+            filtered.sort((a, b) => {
+                if (sortNameVal === 'asc') return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+                if (sortNameVal === 'desc') return b.name.toLowerCase().localeCompare(a.name.toLowerCase());
+                if (sortPriceVal === 'price_asc') return a.price - b.price;
+                if (sortPriceVal === 'price_desc') return b.price - a.price;
+                return 0;
+            });
+        }
 
         if (productCounter) {
             productCounter.innerHTML = `<strong>${filtered.length}</strong>`;
@@ -255,22 +296,34 @@ document.addEventListener("DOMContentLoaded", function() {
         if (filtered.length === 0) {
             const noResults = lang === 'hy' ? 'Ապրանքներ չեն գտնվել' : (lang === 'ru' ? 'Товары не найдены' : 'No products found');
             productGrid.innerHTML = `<p>${noResults}.</p>`;
+            if (paginationContainer) paginationContainer.innerHTML = '';
             return;
         }
 
-        let html = '';
+        // --- PAGINATION LOGIC ---
+        const itemsPerPage = itemsPerPageInput ? (parseInt(itemsPerPageInput.value) || 40) : 40;
+        const totalPages = Math.ceil(filtered.length / itemsPerPage);
 
-        filtered.forEach(item => {
+        // Ensure current page is within valid range
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const paginatedItems = filtered.slice(startIndex, endIndex);
+
+        let html = '';
+        paginatedItems.forEach(item => {
             const isClickable = item.fname && item.fname.length > 0;
             const folderCode = parseInt(item.code, 10);
             const safeName = item.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-            const bgColor = isClickable ? '#e1f5fe' : '#ffffff';
+            const bgColor = isClickable ? 'var(--bg-clickable)' : 'var(--bg-card)';
 
             let cardHtml = `
                 <div class="product-card"
                      style="background-color: ${bgColor};"
-                     onmouseover="this.style.boxShadow='0 4px 8px rgba(0,0,0,0.15)'"
-                     onmouseout="this.style.boxShadow='0 1px 3px rgba(0,0,0,0.05)'">
+                     onmouseover="this.style.boxShadow='0 4px 8px var(--shadow-hover)'"
+                     onmouseout="this.style.boxShadow='0 1px 3px var(--shadow-color)'">
 
                     <img src="/images/products/${folderCode}/1.avif"
                          alt="${safeName}"
@@ -278,17 +331,16 @@ document.addEventListener("DOMContentLoaded", function() {
                          style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;" />
 
                     <div class="product-info">
-                        <span class="product-sku" style="font-size: 0.8rem; color: #666;">#${item.code}</span>
-                        <h3 class="product-title" style="margin: 0.5rem 0; font-size: 1.1rem;">${item.name}</h3>
-                        <div class="product-price" style="font-weight: bold; color: #2c3e50;">
-                            ${item.price.toFixed(2)} ֏ <span class="product-unit" style="font-size: 0.9rem; font-weight: normal;">/ ${item.unit}</span>
+                        <span class="product-sku" style="font-size: 0.8rem; color: var(--text-muted);">#${item.code}</span>
+                        <h3 class="product-title" style="margin: 0.5rem 0; font-size: 1.1rem; color: var(--text-dark);">${item.name}</h3>
+                        <div class="product-price" style="font-weight: bold; color: var(--rocola-green-primary);">
+                            ${item.price.toFixed(2)} ֏ <span class="product-unit" style="font-size: 0.9rem; font-weight: normal; color: var(--text-dark);">/ ${item.unit}</span>
                         </div>
                     </div>
                 </div>
             `;
 
             const targetUrl = isClickable ? `../products/${item.fname}/` : "#";
-
             html += `
                 <a href="${targetUrl}"
                    onclick="handleProductClick(event, '${item.fname || ''}', '${safeName}')"
@@ -299,5 +351,45 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         productGrid.innerHTML = html;
+
+        // --- RENDER PAGINATION BUTTONS ---
+        if (paginationContainer) {
+            let pageHtml = '';
+
+            const lblFirst = lang === 'hy' ? 'Առաջին' : (lang === 'ru' ? 'Первая' : 'First');
+            const lblPrev = lang === 'hy' ? 'Նախորդ' : (lang === 'ru' ? 'Пред.' : 'Prev');
+            const lblNext = lang === 'hy' ? 'Հաջորդ' : (lang === 'ru' ? 'След.' : 'Next');
+            const lblLast = lang === 'hy' ? 'Վերջին' : (lang === 'ru' ? 'Последняя' : 'Last');
+
+            if (totalPages > 1) {
+                // First & Prev
+                pageHtml += `<button class="pagination-btn" onclick="goToPage(1)" ${currentPage === 1 ? 'disabled' : ''}>&laquo; ${lblFirst}</button>`;
+                pageHtml += `<button class="pagination-btn" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>&lsaquo; ${lblPrev}</button>`;
+
+                // Dynamic Page Numbers with "..."
+                let startPage = Math.max(1, currentPage - 2);
+                let endPage = Math.min(totalPages, currentPage + 2);
+
+                if (startPage > 1) {
+                    pageHtml += `<button class="pagination-btn" onclick="goToPage(1)">1</button>`;
+                    if (startPage > 2) pageHtml += `<span class="pagination-ellipsis">...</span>`;
+                }
+
+                for (let i = startPage; i <= endPage; i++) {
+                    pageHtml += `<button class="pagination-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+                }
+
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) pageHtml += `<span class="pagination-ellipsis">...</span>`;
+                    pageHtml += `<button class="pagination-btn" onclick="goToPage(${totalPages})">${totalPages}</button>`;
+                }
+
+                // Next & Last
+                pageHtml += `<button class="pagination-btn" onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>${lblNext} &rsaquo;</button>`;
+                pageHtml += `<button class="pagination-btn" onclick="goToPage(${totalPages})" ${currentPage === totalPages ? 'disabled' : ''}>${lblLast} &raquo;</button>`;
+            }
+
+            paginationContainer.innerHTML = pageHtml;
+        }
     }
 });

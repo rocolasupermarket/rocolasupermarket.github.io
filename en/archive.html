@@ -20,7 +20,15 @@
 <link rel="canonical" href="http://rocola.shop/en/archive.html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><link rel="alternate" hreflang="hy" href="../archive.html">
 <link rel="alternate" hreflang="ru" href="../ru/archive.html">
-<!-- Force Rocola Custom CSS to Load --><link href="../assets/css/rocola-style.css" rel="stylesheet" type="text/css">
+<!-- Prevent FOUC (Flash of Unstyled Content) for Dark Mode --><script>
+(function() {
+    var storedTheme = localStorage.getItem('theme');
+    var systemIsDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (storedTheme === 'dark' || (!storedTheme && systemIsDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+})();
+</script><!-- Force Rocola Custom CSS to Load --><link href="../assets/css/rocola-style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -43,7 +51,15 @@
           </div>
             <div class="col-md-3 justify-content-end align-items-center bs-nav-collapsible collapse flex-collapse bootblog4-right-nav">
             <nav class="navbar navbar-light bg-white"><ul class="navbar-nav bootblog4-right-nav">
-<!-- Fixed Dynamic Language Switcher --><li class="nav-item">
+<!-- Theme Toggle Button --><li class="nav-item">
+                        <button id="theme-toggle" class="nav-link theme-toggle-btn" title="Toggle Light/Dark Mode">
+                            <span id="theme-icon">🌓</span>
+                        </button>
+                    </li>
+
+                    <!-- Fixed Dynamic Language Switcher -->
+                    
+                                <li class="nav-item">
                                 
                                     <a href="../blog/" rel="alternate" hreflang="hy" class="nav-link">AM</a>
                                 </li>
@@ -106,6 +122,35 @@
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
         captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script><!-- Global Theme Toggle Logic --><script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const themeToggleBtn = document.getElementById("theme-toggle");
+        const themeIcon = document.getElementById("theme-icon");
+
+        if (!themeToggleBtn) return;
+
+        function updateIcon() {
+            if (document.documentElement.getAttribute("data-theme") === "dark") {
+                themeIcon.textContent = "☀️";
+            } else {
+                themeIcon.textContent = "🌙";
+            }
+        }
+
+        updateIcon();
+
+        themeToggleBtn.addEventListener("click", () => {
+            let currentTheme = document.documentElement.getAttribute("data-theme");
+            if (currentTheme === "dark") {
+                document.documentElement.removeAttribute("data-theme");
+                localStorage.setItem("theme", "light");
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("theme", "dark");
+            }
+            updateIcon();
+        });
+    });
     </script>
 </body>
 </html>

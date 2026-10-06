@@ -1,19 +1,90 @@
 /* Core Variables: Rocola Corporate Green Palette */
+/* Core Variables: Rocola Corporate Palette */
 :root {
     --rocola-green-primary: #2e7d32;
     --rocola-green-dark: #1b5e20;
     --rocola-green-light: #4caf50;
     --rocola-accent: #ffeb3b;
-    --bg-light: #f9fbf9;
+    --bg-main: #f9fbf9;
+    --bg-card: #ffffff;
+    --bg-clickable: #e1f5fe;
     --text-dark: #333333;
+    --text-muted: #888888;
+    --border-color: #e0e0e0;
+    --slider-track: #dddddd;
+    --header-bg: #ffffff;
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --shadow-color: rgba(0,0,0,0.05);
+    --shadow-hover: rgba(46, 125, 50, 0.15);
+}
+
+[data-theme="dark"] {
+    --rocola-green-primary: #81c784;
+    --rocola-green-dark: #a5d6a7;
+    --rocola-green-light: #4caf50;
+    --rocola-accent: #fbc02d;
+    --bg-main: #121212;
+    --bg-card: #1e1e1e;
+    --bg-clickable: #173d52;
+    --text-dark: #e0e0e0;
+    --text-muted: #aaaaaa;
+    --border-color: #333333;
+    --slider-track: #555555;
+    --header-bg: #1a1a1a;
+    --input-bg: #2c2c2c;
+    --input-border: #444444;
+    --shadow-color: rgba(0,0,0,0.5);
+    --shadow-hover: rgba(129, 199, 132, 0.25);
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-dark);
-    background-color: var(--bg-light);
+    background-color: var(--bg-main);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* Override Bootstrap Light Colors for Dark Mode */
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .bg-light {
+    background-color: var(--header-bg) !important;
+}
+
+[data-theme="dark"] .text-dark,
+[data-theme="dark"] .navbar-light .navbar-nav .nav-link,
+[data-theme="dark"] .navbar-light .navbar-brand {
+    color: var(--text-dark) !important;
+}
+
+[data-theme="dark"] .navbar-light .navbar-toggler-icon {
+    filter: invert(1);
+}
+
+[data-theme="dark"] .blog-header,
+[data-theme="dark"] #footer {
+    border-color: var(--border-color) !important;
+}
+
+/* Theme Toggle Button Style */
+.theme-toggle-btn {
+    background: transparent;
+      border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background-color: var(--border-color);
+}
+
+
 
 /* Force all containers to span the full viewport width */
 .container, .container-fluid {
@@ -45,7 +116,7 @@ body {
 /* Sidebar Filters */
 .rocola-filters {
     flex: 0 0 250px;
-    background: white;
+    background: var(--bg-card);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -84,8 +155,8 @@ section.rocola-product-grid {
 }
 
 .product-card {
-    background: white;
-    border: 1px solid #e0e0e0;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 1rem;
     position: relative;
@@ -195,7 +266,7 @@ section.rocola-product-grid {
     top: 0;
     bottom: 0;
     border-radius: 3px;
-    background-color: #ddd;
+    background-color: var(--slider-track);
     z-index: 1;
 }
 
@@ -238,4 +309,38 @@ section.rocola-product-grid {
 .multi-range-container input[type="range"]:active::-webkit-slider-thumb {
     background-color: var(--rocola-green-dark);
     transform: scale(1.1);
+}
+
+/* Pagination Styles */
+.pagination-btn {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-card);
+    color: var(--rocola-green-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background-color: var(--rocola-green-light);
+    color: #fff;
+}
+
+.pagination-btn.active {
+    background-color: var(--rocola-green-primary);
+    color: #fff;
+    border-color: var(--rocola-green-primary);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #f1f1f1;
+}
+
+.pagination-ellipsis {
+    padding: 0.5rem;
+    color: var(--text-muted);
 }
