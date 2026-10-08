@@ -1,4 +1,11 @@
 code,name,price,unit,category,slug
+00019471,Boneless chicken breast 'Lusakert' 1kg,2540.00,Pcs,010204,boneless-chicken-breast-lusakert-1kg
+00007939,Carbonated drink Fanta orange 1.5L,760,piece,050103,carbonated-drink-fanta-orange-1-5l
+00011952,Drinkable yogurt Yeremyan raspberry 0.8L,780,piece,020105,drinkable-yogurt-yeremyan-raspberry-0-8l
+00015116,Sausage cooked-smoked Tnak Polish kg,2750,kg,040302,sausage-cooked-smoked-tnak-polish-kg
+00005695,Soap Protex cream 4+1 350g,1260,piece,070201,soap-protex-cream-4-1-350g
+00012756,Lavash Sevan with charcoal cut yeast-free 300g,500,piece,020201,lavash-sevan-with-charcoal-cut-yeast-free-300g
+00015688,Eggs Arzni chu-chu #02 6pcs,590,piece,020107,eggs-arzni-chu-chu-02-6pcs
 00001450,Chocolate bar 'Lindt' Excellence dark cocoa 99% 50g,3310.00,Pcs,040101-050203,
 00002225,Drink 'Mont Berry' aloe vera 1.5L,1050.00,Pcs,010103-050103,
 00002790,Beer 'Zatecky Gus' c/can 0.45L,570.00,Pcs,050302,
@@ -13,8 +20,8 @@ code,name,price,unit,category,slug
 00008850,White onion,240.00,Kg,010102,
 00008970,Mixed greens pack,390.00,Pcs,010102,
 00008971,Coriander bunch,380.00,Pcs,010102,
-00009366,Plastic bag Rocola large,70.00,Pcs,070104,
-00009368,Plastic bag Rocola medium,50.00,Pcs,070104,
+00009366,Plastic bag Rocola large,70.00,Pcs,080504,
+00009368,Plastic bag Rocola medium,50.00,Pcs,080504,
 00009510,Tarragon bunch,290.00,Pcs,010102,
 00009584,Tan drink 'Ronis' 1.5% 0.5L,280.00,Pcs,020106-050103,
 00009762,Nectarine,1110.00,Kg,010103,
@@ -41,106 +48,99 @@ code,name,price,unit,category,slug
 00018001,Biscuit 'Choco Pie Orion' 360g,820.00,Pcs,020202-040103,
 00018004,Green beans 'Nush',950.00,Kg,030102,
 00018073,Black tea 'Grand Tea' with thyme & mint 25pcs,1080.00,Pcs,010102-050202,
-00018436,Cleaner & disinfectant 'Nash Sad' alpine freshness 750ml,730.00,Pcs,070104,
-00018437,Cleaner & disinfectant 'Nash Sad' super power 750ml,730.00,Pcs,070104,
+00018436,Cleaner & disinfectant 'Nash Sad' alpine freshness 750ml,730.00,Pcs,080205,
+00018437,Cleaner & disinfectant 'Nash Sad' super power 750ml,730.00,Pcs,080205,
 00018569,Ice cream 'Naviri Lent' cherry 0.6kg,1000.00,Pcs,010103-020104-060103-070201,
-00018782,Glue 'Moment' 3g,150.00,Pcs,070104,
+00018782,Glue 'Moment' 3g,150.00,Pcs,080404,
 00018856,Chocolate bar 'KitKat' milk choc with biscuit & wafer filling 99g,620.00,Pcs,020101-040101-040103,
 00019004,Chanakh cheese 'Yerevan' in water 800g,2700.00,Pcs,020102-050101,
-00019471,Boneless chicken breast 'Lusakert' 1kg,2540.00,Pcs,010204,լուսակերտ-հավի-կրծքամիս
-00007944,Oat drink 'Ne Moloko' chocolate 1L,1200,pcs,040101-050103,ըմպելիք-վարսակի-նե-մոլոկո-շոկոլադե-1լ
-00019438,Chicken lungs 'Lusakert' 1kg,1120,pcs,010204,հավի-թոք-լուսակերտ-1կգ
-00018172,Frozen chicken legs 'Krupiko' 1kg,1450,kg,010204,հավի-ոտիկ-սառեցված-քռուպիկո
-00017731,Frozen chicken breast 'Krupiko' 1kg,1840,kg,010204,հավի-կրծքամիս-սառեցված-քռուպիկո
-00017732,Frozen chicken drumsticks 'Krupiko' 1kg,1180,kg,010204,հավի-բդիկ-սառեցված-քռուպիկո
-00001453,Cookies 'Lovita' chocolate 150g,420,pcs,040101,թխվածքաբլիթ-լովիտա-շոկոլադ-բաց-150գր
-00007371,Black tea 'Ahmad' English No.1 tin 100g,2260,pcs,050202,սև-թեյ-ահմադ-անգլիական-n1-թ-տ-100գր
-00012892,Eggs 'Arzni' Tava #02 9pcs,1200,pcs,020107,հավկիթ-արզնի-թավա-ձու-02-9հատ
-00002821,Honey 'Wild Hive' 100% organic 270g,4590,pcs,040104,մեղր-վայլդ-հայվ-100-օրգանական-270գր
-00008806,Kiwi 1kg,3250,kg,010103,կիվի-կգ
-00017678,Round rice 'Nush' 1kg,490,kg,030101,բրինձ-նուշ-կլոր-կգ
-00008611,Candy bar 'Snickers' 50.5g,290,pcs,040101-040102,բատոն-սնիկերս-50-5գր
-00008614,Candy bar 'Twix' 55g,290,pcs,040101-040102,բատոն-թվիքս-55գր
-00008834,Carrots 1kg,360,kg,010102,գազար-կգ
-00018022,Minced meat 'Gandzasar' 450g,1150,pcs,010201,աղացած-միս-գանձասար-450գր
-00008848,Red cabbage 1kg,590,kg,010102,կաղամբ-կարմիր-կգ
-00009150,Champignon mushrooms pcs,1300,pcs,010102,սունկ-շամպինյոն-հատ
-00008812,Banana 1kg,560,kg,010103,բանան-կգ
-00008817,Lemon 1kg,1430,kg,010103,կիտրոն-կգ
-00008827,Cherry tomatoes bunch 1kg,2340,kg,010103-010102,լոլիկ-չերի-փունջ-կգ
-00007655,Lightly salted frozen Atlantic salmon fillet Mel Mark 300g,8800,pcs,010301,ֆիլե-թույլ-աղադրված-սառեցված-ատլանտյան-սաղմոնի-մել-մարկ-300գր
-00009341,Eggs 'Arzni' Omelette #01 15pcs,1830,pcs,020107,eggs-arzni-omelette-01-15pcs
-00018263,Matsun 'Chanakh' 3.2% 1800g,1490,pcs,020105,matsun-chanakh-3-2-1800g
-00010676,Strawberry kg,3140,kg,010103,strawberry-kg
-00009415,Blackberry pcs,1040,pcs,010103,blackberry-pcs
-00012692,Rye bread 'Sevani' 350g,330,pcs,020201,rye-bread-sevani-350g
-00009687,Kefir 'Bonilat' diet 0.5% 0.45L,440,pcs,020106,kefir-bonilat-diet-0-5-0-45l
-00009053,Almond milk Alpro Barista sugar-free 1L,1590,pcs,020101-030105-040202,almond-milk-alpro-barista-sugar-free-1l
-00008969,Broccoli pcs,330,pcs,010102,broccoli-pcs
-00008968,Lettuce pcs,240,pcs,010102,lettuce-pcs
-00014639,Ice cream 'Pink Berry' Glace coffee 100g,440,pcs,010103-020104-050201-060103-070201,ice-cream-pink-berry-glace-coffee-100g
-00008577,Chewing gum 'Orbit' XXL gentle mint 19g,200,pcs,010102-040102,chewing-gum-orbit-xxl-gentle-mint-19g
-00001457,Chocolate bar 'Lindt' Excellence 70% cocoa 100g,2800,pcs,040101-050203,chocolate-bar-lindt-excellence-70-cocoa-100g
-00006571,Chicken nuggets Miratorg classic 250g,1080.00,pcs,010204,հավի-նագեթներ-միրատորգ-դասական-250գր
-00013457,Whipping cream Marianna 27% 1L,1670.00,pcs,020104-070201,կրեմ-հարելու-համար-մարիաննա-27-1լ
-00008982,Milk Yerevyan 3.2% 250ml,350.00,pcs,020101,կաթ-երևյան-3-2-250մլ
-00009792,Ice cream Snickers 288g,3270.00,pcs,020104-040101-060103-070201,պաղպաղակ-սնիկերս-288գր
-00018097,Drinking yogurt Marianna Bifido 1% 270g,370.00,pcs,020105,ըմպելի-յոգուրտ-մարիաննա-բիֆիդո-1-270գր
-00008813,Pomegranate,2600.00,kg,010103,նուռ
-00019363,Ice cream Tamara 20 kopeks caramel 60g,170.00,pcs,020104-060103-070201,պաղպաղակ-թամարա-20-կոպեկ-կարամել-60գր
-00016647,Choc bar Nestle Dark chocolate 75g,500.00,pcs,040101,շոկ-սալիկ-նեսթլե-դառը-շոկոլադ-75գր
-00008607,Baton Snickers Super 80g,440.00,pcs,040101,բատոն-սնիկերս-սուպեր-80գր
-00018783,Glue 110 5g,100.00,pcs,070104,սոսինձ-110-5գր
-00013891,Grapes Shahumyan,1110.00,kg,010103,խաղող-շահումյան
-00006912,Carbonated drink Lymon Fresh lime p/b 1.3L,970.00,pcs,050103,գազավորված-ըմպելիք-լայմոն-ֆրեշ-լայմ-ա-տ-1-3լ
-00015735,Lactose free milk Domik V Derevni 1.8% 950ml,1020.00,pcs,020101,կաթ-դոմիկ-վ-դերևնի-1-8-առանց-լակտոզայի-950մլ
-00008811,Pineapple,1110.00,kg,010103,արքայախնձոր
-00008304,Cooked veal sausage Rublyovsky 400g,3850.00,pcs,010201-040302,երշիկ-եփած-ռուբլյովսկիյ-հորթի-400գր
-00008819,Avocado,780.00,pcs,010103,ավոկադո
-00008833,Beetroot,260.00,kg,010102,բազուկ
-00017883,Popcorn Hello Panda salted,2460.00,kg,040201,պոպկորն-հելլո-պանդա-աղի
-00002557,Washing powder Tide color 1.6kg,2060.00,pcs,070101,լվացքի-փոշի-թայդ-գունավոր-1.6կգ
-00014665,Dishwashing liquid Top orange 800ml,760.00,pcs,010103-070101,սպասք-լվանալու-հեղուկ-թոփ-նարինջ-800մլ
-00018175,Homemade cheese Chanakh with thyme 250g,960.00,pcs,020102,պանիր-տնական-չանախ-ուրցով-250գր
-00008825,Tomatoes on the vine,720.00,kg,010102,ճյուղով-լոլիկ
-00018381,Hot Lavash sliced 1kg,570.00,pcs,020201,տաք-լավաշ-կտրտած-1կգ
-00010218,Matnakash bread large RKST 800g,340.00,pcs,020201,հաց-մատնաքաշ-մեծ-ռկստ-800գր
-00009842,Milk Tamara 3.2% 1l,550.00,pcs,020101,կաթ-թամարա-3.2-1լ
-00007934,Carbonated drink Sprite 1.5l,760.00,pcs,050103,գազավորված-ըմպելիք-սպրայթ-1.5լ
-00001456,Cookies Lovita classic peanut 150g,330.00,pcs,040202,թխվածքաբլիթ-լովիտա-կլասիկ-գետնանուշ-150գր
-00001451,Cookies Lovita chocolate 150g,330.00,pcs,040101,թխվածքաբլիթ-լովիտա-շոկոլադ-150գր
-00001470,Chocolate bar Merci dark chocolate 72% 100g,1030.00,pcs,040101,շոկոլադե-սալիկ-մերսի-դառը-շոկոլադ-72-100գր
-00009613,Cheese Sofia Kat Yeghegnadzor 200g,600.00,pcs,020102,պանիր-սոֆյա-կաթ-եղեգնաձոր-200գ
-00014019,Tuna Donskaya Kukhnya classic 240g,800.00,pcs,030204,թունա-դոնսկայա-կուխնյա-դասական-240գր
-00005990,Instant Coffee Nescafe Gold jar 190g,3760.00,pcs,050201,լուծվող-սուրճ-նեսկաֆե-գոլդ-190գ
-00004162,Black Sea Sprat in Tomato Sauce 5 Morey 240g,580.00,pcs,010102-030108-030204,կիլկա-սև-ծովյան-տոմատի-սոուսում-5-մորեյ-240գ
-00009569,Matsun Bonilat 3.2% 850g,690.00,pcs,020105,մածուն-բոնիլատ-3.2-850գ
-00014701,Chanakh Cheese Yeremyan vacuum 400g,1340.00,pcs,020102,պանիր-չանախ-երեմյան-վակուում-400գ
-00015146,Lavash Grtnak sliced 1kg,550.00,pcs,020201,լավաշ-գրտնակ-կտրտած-1կգ
-00009348,Eggs Arzni table #01 15pcs,1480.00,pcs,020107,հավկիթ-արզնի-սեղանի-01-15հատ
-00011769,Ice Cream Tamara Chocolate 500g,1040.00,pcs,020104-040101-060103-070201,պաղպաղակ-թամարա-շոկոլադե-500գ
-00009160,Champignon Mushroom,1300.00,pcs,010102,սունկ-շամպինյոն
-00009583,Tan Bonilat 1.5% 1L,500.00,pcs,020106,թան-բոնիլատ-1.5-1լ
-00014316,Orange,850.00,kg,010103,նարինջ
-00012534,Chicken Sticks Atenk Classic 280g,1290.00,pcs,010204-040203,հավի-ձողիկներ-աթենք-դասական-280գ
-00011161,Chocolate Bar Pobeda Sugar Free 72% 100g,1050.00,pcs,030105-040101,շոկոլադե-սալիկ-պոբեդա-առանց-շաքարի-72-100գ
-00002658,Batteries Duracell AAA 2pcs,1050.00,pcs,070104,մարտկոց-դյուրասելլ-aaa-2հատ
-00008683,Chewing Gum Orbit Refreshers Peppermint Sugar Free,300.00,pcs,030105-040102,մաստակ-օրբիտ-ռեֆրեշերս-անանուխ-առանց-շաքարի
-00009431,Milk Dili 3.2% 750ml,900.00,pcs,020101,կաթ-դիլի-3.2-750մլ
-00008591,Chewing Gum 5 Fresh Mint,290.00,pcs,010102-040102,մաստակ-5-թարմ-անանուխ
-00006058,Chocolate Bar Rossiya Dark Chocolate 75g,430.00,pcs,040101,շոկոլադե-սալիկ-ռոսիյա-մուգ-շոկոլադ-75գ
-00007683,Mineral water Jermuk millennium pet 1L,310,piece,050101,հանքային-ջուր-ջերմուկ-1լ
-00007939,Carbonated drink Fanta orange 1.5L,760,piece,050103,ֆանտա-նարինջ-1-5լ
-00011952,Drinkable yogurt Yeremyan raspberry 0.8L,780,piece,020105,յոգուրտ-երեմյան-0-8լ
-00011238,Sour cream Tamara 18% 900g,1420,piece,020104,թթվասեր-թամարա-18-900գր
-00013421,Milk Marianna pasteurized 3.2% 950ml,530,piece,020101,կաթ-մարիաննա-3-2
-00015116,Sausage cooked-smoked Tnak Polish kg,2750,kg,040302,երշիկ-տնակ-լեհական
-00018023,Minced meat Gandzasar 900g,2290,piece,010201,աղացած-միս-գանձասար
-00009157,Persimmon Israel kg,7150,kg,010103,արքայանարինջ-իզրայել
-00008811,Pineapple kg,1110,kg,010103,արքայախնձոր
-00005695,Soap Protex cream 4+1 350g,1260,piece,070201,օճառ-պրոտեքս
-00014348,Cottage cheese Chanakh non-fat 180g,600,piece,020102,կաթնաշոռ-չանախ-անյուղ
-00019988,Apple Paradise kg,2210,kg,010103,խնձոր-դրախտային
-00012756,Lavash Sevan with charcoal cut yeast-free 300g,500,piece,020201,լավաշ-սևանի-ածուխով
-00006754,Chocolate bar Grand Candy dark chocolate 80% 90g,860,piece,040101,շոկոլադ-գրանդ-քենդի
-00015688,Eggs Arzni chu-chu #02 6pcs,590,piece,020107,հավկիթ-արզնի-6հատ
+00007944,Oat drink 'Ne Moloko' chocolate 1L,1200,pcs,040101-050103,
+00019438,Chicken lungs 'Lusakert' 1kg,1120,pcs,010204,
+00018172,Frozen chicken legs 'Krupiko' 1kg,1450,kg,010204,
+00017731,Frozen chicken breast 'Krupiko' 1kg,1840,kg,010204,
+00017732,Frozen chicken drumsticks 'Krupiko' 1kg,1180,kg,010204,
+00001453,Cookies 'Lovita' chocolate 150g,420,pcs,040101,
+00007371,Black tea 'Ahmad' English No.1 tin 100g,2260,pcs,050202,
+00012892,Eggs 'Arzni' Tava #02 9pcs,1200,pcs,020107,
+00002821,Honey 'Wild Hive' 100% organic 270g,4590,pcs,040104,
+00008806,Kiwi 1kg,3250,kg,010103,
+00017678,Round rice 'Nush' 1kg,490,kg,030101,
+00008611,Candy bar 'Snickers' 50.5g,290,pcs,040101-040102,
+00008614,Candy bar 'Twix' 55g,290,pcs,040101-040102,
+00008834,Carrots 1kg,360,kg,010102,
+00018022,Minced meat 'Gandzasar' 450g,1150,pcs,010201,
+00008848,Red cabbage 1kg,590,kg,010102,
+00009150,Champignon mushrooms pcs,1300,pcs,010102,
+00008812,Banana 1kg,560,kg,010103,
+00008817,Lemon 1kg,1430,kg,010103,
+00008827,Cherry tomatoes bunch 1kg,2340,kg,010103-010102,
+00007655,Lightly salted frozen Atlantic salmon fillet Mel Mark 300g,8800,pcs,010301,
+00009341,Eggs 'Arzni' Omelette #01 15pcs,1830,pcs,020107,
+00018263,Matsun 'Chanakh' 3.2% 1800g,1490,pcs,020105,
+00010676,Strawberry kg,3140,kg,010103,
+00009415,Blackberry pcs,1040,pcs,010103,
+00012692,Rye bread 'Sevani' 350g,330,pcs,020201,
+00009687,Kefir 'Bonilat' diet 0.5% 0.45L,440,pcs,020106,
+00009053,Almond milk Alpro Barista sugar-free 1L,1590,pcs,020101-030105-040202,
+00008969,Broccoli pcs,330,pcs,010102,
+00008968,Lettuce pcs,240,pcs,010102,
+00014639,Ice cream 'Pink Berry' Glace coffee 100g,440,pcs,010103-020104-050201-060103-070201,
+00008577,Chewing gum 'Orbit' XXL gentle mint 19g,200,pcs,010102-040102,
+00001457,Chocolate bar 'Lindt' Excellence 70% cocoa 100g,2800,pcs,040101-050203,
+00006571,Chicken nuggets Miratorg classic 250g,1080.00,pcs,010204,
+00013457,Whipping cream Marianna 27% 1L,1670.00,pcs,020104-070201,
+00008982,Milk Yerevyan 3.2% 250ml,350.00,pcs,020101,
+00009792,Ice cream Snickers 288g,3270.00,pcs,020104-040101-060103-070201,
+00018097,Drinking yogurt Marianna Bifido 1% 270g,370.00,pcs,020105,
+00008813,Pomegranate,2600.00,kg,010103,
+00019363,Ice cream Tamara 20 kopeks caramel 60g,170.00,pcs,020104-060103-070201,
+00016647,Choc bar Nestle Dark chocolate 75g,500.00,pcs,040101,
+00008607,Baton Snickers Super 80g,440.00,pcs,040101,
+00018783,Glue 110 5g,100.00,pcs,080404,
+00013891,Grapes Shahumyan,1110.00,kg,010103,
+00006912,Carbonated drink Lymon Fresh lime p/b 1.3L,970.00,pcs,050103,
+00015735,Lactose free milk Domik V Derevni 1.8% 950ml,1020.00,pcs,020101,
+00008811,Pineapple,1110.00,kg,010103,
+00008304,Cooked veal sausage Rublyovsky 400g,3850.00,pcs,010201-040302,
+00008819,Avocado,780.00,pcs,010103,
+00008833,Beetroot,260.00,kg,010102,
+00017883,Popcorn Hello Panda salted,2460.00,kg,040201,
+00002557,Washing powder Tide color 1.6kg,2060.00,pcs,080102,
+00014665,Dishwashing liquid Top orange 800ml,760.00,pcs,010103-070101,
+00018175,Homemade cheese Chanakh with thyme 250g,960.00,pcs,020102,
+00008825,Tomatoes on the vine,720.00,kg,010102,
+00018381,Hot Lavash sliced 1kg,570.00,pcs,020201,
+00010218,Matnakash bread large RKST 800g,340.00,pcs,020201,
+00009842,Milk Tamara 3.2% 1l,550.00,pcs,020101,
+00007934,Carbonated drink Sprite 1.5l,760.00,pcs,050103,
+00001456,Cookies Lovita classic peanut 150g,330.00,pcs,040202,
+00001451,Cookies Lovita chocolate 150g,330.00,pcs,040101,
+00001470,Chocolate bar Merci dark chocolate 72% 100g,1030.00,pcs,040101,
+00009613,Cheese Sofia Kat Yeghegnadzor 200g,600.00,pcs,020102,
+00014019,Tuna Donskaya Kukhnya classic 240g,800.00,pcs,030204,
+00005990,Instant Coffee Nescafe Gold jar 190g,3760.00,pcs,050201,
+00004162,Black Sea Sprat in Tomato Sauce 5 Morey 240g,580.00,pcs,010102-030108-030204,
+00009569,Matsun Bonilat 3.2% 850g,690.00,pcs,020105,
+00014701,Chanakh Cheese Yeremyan vacuum 400g,1340.00,pcs,020102,
+00015146,Lavash Grtnak sliced 1kg,550.00,pcs,020201,
+00009348,Eggs Arzni table #01 15pcs,1480.00,pcs,020107,
+00011769,Ice Cream Tamara Chocolate 500g,1040.00,pcs,020104-040101-060103-070201,
+00009160,Champignon Mushroom,1300.00,pcs,010102,
+00009583,Tan Bonilat 1.5% 1L,500.00,pcs,020106,
+00014316,Orange,850.00,kg,010103,
+00012534,Chicken Sticks Atenk Classic 280g,1290.00,pcs,010204-040203,
+00011161,Chocolate Bar Pobeda Sugar Free 72% 100g,1050.00,pcs,030105-040101,
+00002658,Batteries Duracell AAA 2pcs,1050.00,pcs,080404,
+00008683,Chewing Gum Orbit Refreshers Peppermint Sugar Free,300.00,pcs,030105-040102,
+00009431,Milk Dili 3.2% 750ml,900.00,pcs,020101,
+00008591,Chewing Gum 5 Fresh Mint,290.00,pcs,010102-040102,
+00006058,Chocolate Bar Rossiya Dark Chocolate 75g,430.00,pcs,040101,
+00007683,Mineral water Jermuk millennium pet 1L,310,piece,050101,
+00011238,Sour cream Tamara 18% 900g,1420,piece,020104,
+00013421,Milk Marianna pasteurized 3.2% 950ml,530,piece,020101,
+00018023,Minced meat Gandzasar 900g,2290,piece,010201,
+00009157,Persimmon Israel kg,7150,kg,010103,
+00008811,Pineapple kg,1110,kg,010103,
+00014348,Cottage cheese Chanakh non-fat 180g,600,piece,020102,
+00019988,Apple Paradise kg,2210,kg,010103,
+00006754,Chocolate bar Grand Candy dark chocolate 80% 90g,860,piece,040101,

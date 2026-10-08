@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     updateCartBadge(); // Run on page load
     */
-
     window.modifyCart = function(event, code, action, price, name, unit) {
         event.preventDefault();
         event.stopPropagation(); // Prevents navigating to the product page when clicking buttons
@@ -49,11 +48,46 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         localStorage.setItem('rocola_cart', JSON.stringify(cart));
-        updateCartBadge();
 
-        // Re-render the grid instantly to update the button states
-        if (document.getElementById("productGrid")) renderProducts();
+        // Update the header cart icon
+        if (typeof window.updateCartBadge === 'function') {
+            window.updateCartBadge();
+        }
+
+        // Only update the specific product card to prevent the whole grid from refreshing
+        updateSingleCartControl(code);
     };
+
+    function updateSingleCartControl(code) {
+        const container = document.getElementById(`cart-container-${code}`);
+        if (!container) return; // The item might not be currently rendered on this page
+
+        const product = allProducts.find(p => p.code === code);
+        if (!product) return;
+
+        const inCart = cart[code] ? cart[code].quantity : 0;
+        const addLabel = lang === 'hy' ? 'Ավելացնել զամբյուղ' : (lang === 'ru' ? 'В корзину' : 'Add to Cart');
+        const safeName = product.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+
+        let cartControls = '';
+        if (inCart > 0) {
+            cartControls = `
+                <div class="cart-controls" style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; background: var(--bg-main); border-radius: 4px; padding: 4px; border: 1px solid var(--border-color);">
+                    <button onclick="modifyCart(event, '${code}', 'decrease')" style="background: var(--rocola-green-primary); color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 1.1rem; line-height: 1;">-</button>
+                    <span style="font-weight: bold; font-size: 1.1rem; color: var(--rocola-green-dark);">${inCart}</span>
+                    <button onclick="modifyCart(event, '${code}', 'increase')" style="background: var(--rocola-green-primary); color: white; border: none; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 1.1rem; line-height: 1;">+</button>
+                </div>
+            `;
+        } else {
+            cartControls = `
+                <button onclick="modifyCart(event, '${code}', 'add', ${product.price}, '${safeName}', '${product.unit}')" style="width: 100%; margin-top: 10px; background: var(--rocola-accent); color: var(--rocola-green-dark); font-weight: bold; border: none; padding: 8px; border-radius: 4px; cursor: pointer; transition: opacity 0.2s;">
+                    🛒 ${addLabel}
+                </button>
+            `;
+        }
+
+        container.innerHTML = cartControls;
+    }
 
     // UI Elements
     const minPriceNum = document.getElementById("minPriceNum");
@@ -358,7 +392,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const folderCode = parseInt(item.code, 10);
             const safeName = item.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
             const bgColor = isClickable ? 'var(--bg-clickable)' : 'var(--bg-card)';
-            const targetUrl = isClickable ? `../products/${item.fname}/` : "#";
+            const targetUrl = isClickable ? `./products/${item.fname}/` : "#";
+
+            // Only attempt to load the actual image if the product has a slug/folder
+            const imgSrc = isClickable ? `/images/products/${folderCode}/1.avif` : '/images/products/default.jpg';
 
             // Determine Cart Button State
             const inCart = cart[item.code] ? cart[item.code].quantity : 0;
@@ -392,8 +429,9 @@ document.addEventListener("DOMContentLoaded", function() {
                        onclick="handleProductClick(event, '${item.fname || ''}', '${safeName}')"
                        style="text-decoration: none; color: inherit; display: block; flex-grow: 1;">
 
-                        <img src="/images/products/${folderCode}/1.avif"
+                        <img src="${imgSrc}"
                              alt="${safeName}"
+                             loading="lazy"
                              onerror="this.onerror=null; this.src='/images/products/default.jpg';"
                              style="width: 100%; height: 150px; object-fit: cover; border-radius: 4px; margin-bottom: 10px;" />
 
@@ -407,7 +445,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     </a>
 
                     <!-- Dedicated Cart Area -->
-                    <div>
+                    <div id="cart-container-${item.code}">
                         ${cartControls}
                     </div>
                 </div>

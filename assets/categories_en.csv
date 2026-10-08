@@ -110,3 +110,44 @@ Code,Name
 070500,Tobacco & Accessories
 070501,Cigarettes & Smoke-free products
 070502,Cigars & Tobacco
+080000,Household Goods
+080100,Detergents
+080101,Dishwashing detergent
+080102,Washing powder and gel
+080103,"Antistatic, ironing agent"
+080104,"Rinser, conditioner"
+080105,"Bleach, stain remover"
+080106,Other
+080200,Cleansers
+080201,For carpet
+080202,For furniture
+080203,"For clothes, shoes"
+080204,For floor
+080205,Universal
+080206,For sanitaryware
+080207,For glass
+080208,Other
+080300,Aerosols
+080301,For air
+080302,For furniture
+080303,For toilet bowl
+080304,Anti-insect
+080305,Other
+080400,Household articles
+080401,For kitchen
+080402,"For bathroom, toilet"
+080403,For cleaning
+080404,Other
+080500,"Disposable tableware & Packaging"
+080501,Disposable tableware
+080502,Trash bags
+080503,"Food film, foil"
+080504,"Wrapping package, paper"
+080600,Paper goods
+080601,Paper towel
+080602,Toilet paper
+080603,Napkin
+080700,Cleaning goods
+080701,"Sponge, brush"
+080702,"Rubber goods, gloves"
+080703,Rag
